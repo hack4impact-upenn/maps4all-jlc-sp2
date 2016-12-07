@@ -9,13 +9,15 @@ class Suggestion(db.Model):
     __tablename__ = 'suggestions'
     id = db.Column(db.Integer, primary_key=True)
     resource_id = db.Column(db.Integer, db.ForeignKey('resources.id'))
-    suggestion_text = db.Column(db.String(250))
+    suggestion_text = db.Column(db.Text)
     # 0 stands for read, 1 stands for unread
     read = db.Column(db.Boolean, default=False)
     submission_time = db.Column(db.DateTime)
     contact_name = db.Column(db.String(64))
     contact_email = db.Column(db.String(64))
     contact_phone_number = db.Column(db.String(64))
+    resource_name = db.Column(db.String(64))
+    resource_address = db.Column(db.String(250))
 
     def __repr__(self):
         return '%s: %s' % (self.id, self.resource_id)
@@ -36,9 +38,12 @@ class Suggestion(db.Model):
             s_contact_name = fake.word()
             s_contact_email = fake.word() + "@" + fake.word() + ".com"
             s_contact_number = "123-456-7890"
+            s_resource_name = fake.word()
+            s_resource_address = fake.word()
             s_insert = Suggestion(suggestion_text=s_text,
                                   read=s_read, submission_time=s_timestamp, contact_name=s_contact_name,
-                                  contact_email=s_contact_email, contact_phone_number=s_contact_number)
+                                  contact_email=s_contact_email, contact_phone_number=s_contact_number,
+                                  resource_name=s_resource_name, resource_address=s_resource_address)
             db.session.add(s_insert)
             try:
                 db.session.commit()

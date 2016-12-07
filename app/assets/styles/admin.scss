@@ -1,0 +1,13 @@
+// About page 
+.updated-alert, .ui.button.cancel-edit, .ui.button.end-edit {
+  display: none;
+}
+
+.cke_editable {
+  padding: .5em;
+}
+
+#editor-about-admin, #editor-contact-admin {
+  min-height: 100px;
+  word-wrap: break-word;
+}

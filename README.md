@@ -1,58 +1,87 @@
-
 # Maps4All for Juvenile Law Center &amp; Penn School of Social Policy and Practice
  [![Circle CI](https://circleci.com/gh/hack4impact/flask-base.svg?style=svg)](https://circleci.com/gh/hack4impact/flask-base) [![Stories in Ready](https://badge.waffle.io/hack4impact/flask-base.png?label=ready&title=Ready)](https://waffle.io/hack4impact/flask-base)
 
 ## Team Members
+- Rani Iyer
+- Annie Meng
+- Stephanie Shi
+- Sanjay Subramanian
+- Ben Sandler
+- Brandon Obas
+- Kyle Rosenbluth
 
 ## Setting up
 
-1. Clone the repo
+##### Clone the repo
 
     ```
     $ git clone https://github.com/hack4impact/maps4all-jlc-sp2.git
     $ cd maps4all-jlc-sp2
     ```
 
-2. Initialize a virtualenv
+##### Initialize a virtualenv
 
-    ```
-    $ pip install virtualenv
-    $ virtualenv env
-    $ source env/bin/activate
-    ```
+```
+$ pip install virtualenv
+$ virtualenv env
+$ source env/bin/activate
+```
+(If you're on a mac) Make sure xcode tools are installed
+```
+$ xcode-select --install
+```
 
-3. Install the dependencies
+##### Install the dependencies
 
-    ```
-    $ pip install -r requirements/common.txt
-    $ pip install -r requirements/dev.txt
-    ```
+```
+$ pip install -r requirements/common.txt
+$ pip install -r requirements/dev.txt
+```
 
-4. Create the database
+##### Other dependencies for running locally
+>>>>>>> maps4all/master
 
-    ```
-    $ python manage.py recreate_db
-    ```
+You need to install [Foreman](https://ddollar.github.io/foreman/) and [Redis](http://redis.io/). Chances are, these commands will work:
 
-5. Other setup (e.g. creating roles in database)
+```
+$ gem install foreman
+```
 
-    ```
-    $ python manage.py setup_dev
-    ```
+Mac (using [homebrew](http://brew.sh/)):
 
-6. [Optional] Add fake data to the database
+```
+$ brew install redis
+```
 
-    ```
-    $ python manage.py add_fake_data
-    ```
+Linux:
+
+```
+$ sudo apt-get install redis-server
+```
+
+##### Create the database
+
+```
+$ python manage.py recreate_db
+```
+
+##### Other setup (e.g. creating roles in database)
+
+```
+$ python manage.py setup_dev
+```
+
+##### [Optional] Add fake data to the database
+
+```
+$ python manage.py add_fake_data
+```
 
 ## Running the app
 
 ```
 $ source env/bin/activate
-$ python manage.py runserver
- * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
- * Restarting with stat
+$ foreman start -f Local
 ```
 
 ## License
