@@ -39,7 +39,6 @@ $ pip install -r requirements/dev.txt
 ```
 
 ##### Other dependencies for running locally
->>>>>>> maps4all/master
 
 You need to install [Foreman](https://ddollar.github.io/foreman/) and [Redis](http://redis.io/). Chances are, these commands will work:
 
