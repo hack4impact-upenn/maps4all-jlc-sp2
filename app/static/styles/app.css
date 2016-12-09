@@ -9,7 +9,7 @@
 }
 
 @media -sass-debug-info{filename{}line{font-family:\0000310}}
-#editor-about-admin, #editor-contact-admin {
+.editor-admin {
   min-height: 100px;
   word-wrap: break-word;
 }
@@ -343,7 +343,7 @@ table.selectable tr:hover {
 }
 
 @media -sass-debug-info{filename{}line{font-family:\000036}}
-#editor-about-user, #editor-contact-user {
+.editor-user {
   word-wrap: break-word;
 }
 
