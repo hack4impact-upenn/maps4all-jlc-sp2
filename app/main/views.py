@@ -77,6 +77,18 @@ def about():
     return render_template('main/about.html',
                            editable_html_obj=editable_html_obj)
 
+@main.route('/health')
+def health():
+    editable_html_obj = EditableHTML.get_editable_html('health')
+    return render_template('main/health.html',
+                           editable_html_obj=editable_html_obj)
+
+@main.route('/rights')
+def rights():
+    editable_html_obj = EditableHTML.get_editable_html('rights')
+    return render_template('main/rights.html',
+                           editable_html_obj=editable_html_obj)
+
 @main.route('/update-editor-contents', methods=['POST'])
 @login_required
 def update_editor_contents():

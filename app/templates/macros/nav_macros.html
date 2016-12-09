@@ -29,9 +29,20 @@
 {% macro account_items(current_user) %}
     <a href="{{ url_for('main.about') }}" class="item">About</a>
     <a href="{{ url_for('contact.index') }}" class="item">Contact Us</a>
+    <div class="ui simple dropdown item">
+            Information 
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                <h3 class="ui header">Info</h3>
+                {{ dropdown_choice('Health Insurance', 'main.health',
+                                    icon='first aid icon') }}
+                {{ dropdown_choice('Know Your Rights', 'main.rights',
+                                    icon='book icon') }}
+            </div>
+        </div>
     {% if current_user.is_authenticated() %}
         <div class="ui simple dropdown item">
-            Manage Resources
+            Manage Resources 
             <i class="dropdown icon"></i>
             <div class="menu">
                 <h3 class="ui header">Resources</h3>
