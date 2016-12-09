@@ -19,18 +19,24 @@ nav {
   margin-bottom: 40px !important;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000312}}
+@media -sass-debug-info{filename{}line{font-family:\0000311}}
+.ui.fixed.main.menu {
+  background-color: #2C9FA3;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000317}}
 .ui.fixed.main.menu .right.menu > .item:last-of-type {
   border-right: 1px solid rgba(34, 36, 38, 0.09804);
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000318}}
+@media -sass-debug-info{filename{}line{font-family:\0000323}}
 nav .mobile.only.row .ui.vertical.menu {
   display: none;
   margin-top: 40px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000325}}
+@media -sass-debug-info{filename{}line{font-family:\0000330}}
 .flashes > .ui.message:last-of-type {
   float: right;
   overflow: visible;
@@ -38,24 +44,24 @@ nav .mobile.only.row .ui.vertical.menu {
   z-index: 1000;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000333}}
+@media -sass-debug-info{filename{}line{font-family:\0000338}}
 table.selectable tr:hover {
   cursor: pointer !important;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000338}}
+@media -sass-debug-info{filename{}line{font-family:\0000343}}
 .ui.dropdown > .text {
   color: gray;
 }
 
 /******** GENERAL MAP/LIST GRID STYLES *************/
-@media -sass-debug-info{filename{}line{font-family:\000036}}
+@media -sass-debug-info{filename{}line{font-family:\000037}}
 #map-list-grid {
   padding: 1em;
   position: absolute;
   width: 100%;
 }
-@media -sass-debug-info{filename{}line{font-family:\0000311}}
+@media -sass-debug-info{filename{}line{font-family:\0000312}}
 #map-list-grid #left-column {
   background-color: #EEEEEE;
   border: 1px solid #CCCCCC;
@@ -63,151 +69,161 @@ table.selectable tr:hover {
   overflow-y: scroll;
   padding: 1em;
 }
-@media -sass-debug-info{filename{}line{font-family:\0000319}}
+@media -sass-debug-info{filename{}line{font-family:\0000320}}
 #map-list-grid #right-column {
   padding: 0;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000324}}
+@media -sass-debug-info{filename{}line{font-family:\0000325}}
 #left-column-divider {
   margin-bottom: 0;
 }
 
 /*************** SEARCH STYLES ****************/
-@media -sass-debug-info{filename{}line{font-family:\0000330}}
+@media -sass-debug-info{filename{}line{font-family:\0000331}}
 #pac-input, #resources-input {
   background-color: #fff;
   float: left;
-  font-family: Roboto;
+  font-family: "Nunito Sans", sans-serif;
   font-size: 15px;
   font-weight: 300;
   text-overflow: ellipsis;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000339}}
+@media -sass-debug-info{filename{}line{font-family:\0000340}}
 #pac-input:focus, #resources-input:focus, #search-resources-req-options:focus {
   border-color: #2C9FA3;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000343}}
+@media -sass-debug-info{filename{}line{font-family:\0000344}}
 #location-search, #search-keyword, #resources-input {
   height: 40px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000348}}
+@media -sass-debug-info{filename{}line{font-family:\0000349}}
 #search-user-resources {
   background-color: #2C9FA3;
   color: #fff;
-  font-family: Roboto;
+  font-family: "Nunito Sans", sans-serif;
   font-weight: 400;
 }
 
 @media -sass-debug-info{filename{}line{font-family:\0000356}}
-#resource-search {
-  box-shadow: none;
-  background-color: #F8F8F8;
+#search-user-resources:hover {
+  background-color: #2DBDC2;
 }
 
 @media -sass-debug-info{filename{}line{font-family:\0000361}}
+#resource-search {
+  background-color: #F8F8F8;
+  box-shadow: none;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000366}}
 .descriptor-group {
-  font-family: Roboto;
+  font-family: "Nunito Sans", sans-serif;
   margin: 3px;
 }
-@media -sass-debug-info{filename{}line{font-family:\0000365}}
+@media -sass-debug-info{filename{}line{font-family:\0000370}}
 .descriptor-group h5 {
-  font-family: Roboto;
+  font-family: "Nunito Sans", sans-serif;
   margin: 0 0 5px 0;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000371}}
+@media -sass-debug-info{filename{}line{font-family:\0000376}}
 .option-group, .option-group-advanced {
   margin-bottom: 10px;
   margin-top: 10px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000376}}
+@media -sass-debug-info{filename{}line{font-family:\0000381}}
 .option-group-advanced {
   display: none;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000380}}
+@media -sass-debug-info{filename{}line{font-family:\0000385}}
 #advanced-filters-showhide {
   color: #2C9FA3;
   cursor: pointer;
-  font-family: Roboto;
+  font-family: "Nunito Sans", sans-serif;
   margin-bottom: 0.5em;
   text-decoration: none;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000388}}
+@media -sass-debug-info{filename{}line{font-family:\0000393}}
+#advanced-filters-showhide:hover {
+  color: #2DBDC2;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000397}}
 .checkbox-option {
   margin-right: 5px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000392}}
+@media -sass-debug-info{filename{}line{font-family:\00003101}}
 .descriptor {
   display: block;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000396}}
+@media -sass-debug-info{filename{}line{font-family:\00003105}}
 #search-divider, #results-divider {
   color: #555;
-  font-family: Roboto;
+  font-family: "Nunito Sans", sans-serif;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003101}}
+@media -sass-debug-info{filename{}line{font-family:\00003110}}
 #results-divider {
   margin-bottom: 0px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003105}}
+@media -sass-debug-info{filename{}line{font-family:\00003114}}
 #search-keyword {
   margin: 0 0 5px 0;
 }
 
 /*************** LIST STYLES ****************/
-@media -sass-debug-info{filename{}line{font-family:\00003110}}
+@media -sass-debug-info{filename{}line{font-family:\00003119}}
 #list {
-  height: 100%;
+  margin-bottom: 0px;
   margin-top: 0px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003116}}
+@media -sass-debug-info{filename{}line{font-family:\00003125}}
 #list > .item.list-resource {
   cursor: pointer;
   margin: 0.5em;
   padding-bottom: 0.5em;
   padding-top: 0.5em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003122}}
+@media -sass-debug-info{filename{}line{font-family:\00003131}}
 #list > .item.list-resource .sub.header {
   float: left;
-  font-family: Roboto;
+  font-family: "Nunito Sans", sans-serif;
   font-weight: normal;
   margin-right: 15px;
   padding-right: 10px;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003129}}
+@media -sass-debug-info{filename{}line{font-family:\00003138}}
 #list > .item.list-resource .sub.header .ui.small.label {
   font-size: 14px;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003134}}
+@media -sass-debug-info{filename{}line{font-family:\00003143}}
 #list > .item.list-resource .header {
   display: inline-block;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003138}}
+@media -sass-debug-info{filename{}line{font-family:\00003147}}
 #list > .item.list-resource .ui.label {
   background-color: #DDDDDD;
   display: inline-block;
   margin-left: 0;
   margin-top: 0.5em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003145}}
+@media -sass-debug-info{filename{}line{font-family:\00003154}}
 #list > .item.list-resource a, #list > .item.list-resource a:hover, #list > .item.list-resource a:active {
   color: #2C9FA3;
-  font-family: Roboto;
+  font-family: "Nunito Sans", sans-serif;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003150}}
+@media -sass-debug-info{filename{}line{font-family:\00003159}}
 #list > .item.list-resource #resource-list-chevron {
   float: right;
   margin-top: 1.5em;
@@ -216,8 +232,13 @@ table.selectable tr:hover {
   vertical-align: middle;
 }
 
+@media -sass-debug-info{filename{}line{font-family:\00003168}}
+#list > .item.list-resource:hover {
+  background-color: #fff;
+}
+
 /*************** MAP STYLES ****************/
-@media -sass-debug-info{filename{}line{font-family:\00003161}}
+@media -sass-debug-info{filename{}line{font-family:\00003173}}
 #map {
   border: solid #CCCCCC;
   border-width: 1px 1px 1px 0;
@@ -225,72 +246,83 @@ table.selectable tr:hover {
   width: 100%;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003169}}
+@media -sass-debug-info{filename{}line{font-family:\00003181}}
 .marker-info {
-  font-family: Roboto;
-  padding: 0.25em;
+  font-family: "Nunito Sans", sans-serif;
+  padding: 0.25em 0.25em 0em;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003185}}
+.marker-info .ui.header {
+  font-family: "Nunito Sans", sans-serif;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003174}}
+@media -sass-debug-info{filename{}line{font-family:\00003190}}
 #marker-resource-name, #marker-resource-info {
-  font-family: Roboto;
+  font-family: "Nunito Sans", sans-serif;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003178}}
+@media -sass-debug-info{filename{}line{font-family:\00003194}}
 .more-info {
+  font-family: "Nunito Sans", sans-serif;
   color: #2C9FA3;
   cursor: pointer;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003184}}
+@media -sass-debug-info{filename{}line{font-family:\00003201}}
 .more-info:hover {
-  color: #2C9FA3;
+  color: #2DBDC2;
 }
 
 /*************** RESOURCE VIEW SPECIFIC STYLES ****************/
-@media -sass-debug-info{filename{}line{font-family:\00003190}}
+@media -sass-debug-info{filename{}line{font-family:\00003207}}
 #resource-info {
   background-color: #F8F8F8;
   border: solid #CCCCCC;
   border-width: 1px 1px 1px 0;
-  font-family: Roboto;
+  font-family: "Nunito Sans", sans-serif !important;
   height: 100%;
   overflow: scroll;
   padding: 1.25em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003200}}
+@media -sass-debug-info{filename{}line{font-family:\00003217}}
 #resource-info > .ui.header > .sub.header > .ui.label {
   margin-left: 0px;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003204}}
+@media -sass-debug-info{filename{}line{font-family:\00003221}}
 #resource-info a {
   color: #2C9FA3;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003208}}
+@media -sass-debug-info{filename{}line{font-family:\00003225}}
 #resource-info #resource-name {
   display: inline;
   font-size: 36px;
   padding-bottom: 1em;
   padding-top: 1em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003215}}
+@media -sass-debug-info{filename{}line{font-family:\00003232}}
 #resource-info .sub.header {
+  font-family: "Nunito Sans", sans-serif;
   font-size: 14px;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003219}}
+@media -sass-debug-info{filename{}line{font-family:\00003237}}
 #resource-info .ui.label {
   font-size: 14px;
   margin-top: 0.4em;
   margin-bottom: 1em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003224}}
+@media -sass-debug-info{filename{}line{font-family:\00003243}}
 #resource-info .ui.header {
   color: #2C9FA3;
-  font-family: Roboto;
+  font-family: "Nunito Sans", sans-serif;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003230}}
+@media -sass-debug-info{filename{}line{font-family:\00003249}}
+#descriptor-name {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\00003253}}
 #back-button {
   color: #2C9FA3;
   display: inline-block;
@@ -299,13 +331,33 @@ table.selectable tr:hover {
   z-index: 2;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003238}}
+@media -sass-debug-info{filename{}line{font-family:\00003261}}
+#back-button:hover {
+  color: #2DBDC2;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\00003265}}
 #single-resource-map {
   height: 400px;
   width: 100%;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\000031}}
+@media -sass-debug-info{filename{}line{font-family:\000036}}
 #editor-about-user, #editor-contact-user {
   word-wrap: break-word;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000310}}
+#about {
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000320}}
+#about-header {
+  font-family: "Nunito Sans", sans-serif;
 }

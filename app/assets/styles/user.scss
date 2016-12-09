@@ -1,3 +1,22 @@
+$accent-color: #2C9FA3;
+$accent-color-light: #2DBDC2;
+$font-choice: 'Nunito Sans', sans-serif;
+$transform: translate(-50%,-50%);
+
 #editor-about-user, #editor-contact-user {
     word-wrap: break-word;
+}
+
+#about {
+  //background-color: #eee;
+  position: absolute;;
+  top: 200px;
+  left: 50%;
+  -webkit-transform: $transform;
+  -ms-transform: $transform;
+  transform: $transform;
+}
+
+#about-header {
+  font-family: $font-choice;
 }

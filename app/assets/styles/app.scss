@@ -8,6 +8,11 @@ nav {
   margin-bottom: 40px !important;
 }
 
+.ui.fixed.main.menu {
+  background-color: #2C9FA3;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
 // Desktop nav
 .ui.fixed.main.menu .right.menu > .item:last-of-type {
   border-right: 1px solid rgba(34, 36, 38, 0.0980392);

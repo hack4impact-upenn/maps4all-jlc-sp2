@@ -120,7 +120,6 @@
     <div class="ui horizontal divider" id="results-divider">Results</div>
     <div id="list" class="ui middle aligned divided list"></div>
 
-    <!--<div class="ui divider" id="left-column-divider"></div>-->
     <div class="ui middle aligned divided list" id="list"></div>
   </div>
 
@@ -174,7 +173,7 @@
     <div class="ui list">
       {% raw %}{{#each descriptors}}{% endraw %}
       <div class="item descriptor">
-        <div class="header">{% raw %}{{ key }}{% endraw %}</div>
+        <div class="header" id="descriptor-name">{% raw %}{{ key }}{% endraw %}</div>
         {% raw %}{{ value }}{% endraw %}
       </div>
       {% raw %}{{/each}}{% endraw %}
@@ -192,7 +191,7 @@
 <!-- Populate list view-->
 <script id="listview-template" type="text/x-handlebars-template">
   {% raw %}{{#each resource}}{% endraw %}
-  <div class="item list-resource">
+  <div class="item list-resource" id="list-specific-resource">
     <h3 class="ui header">
       <a>{% raw %}{{ name }}{% endraw %}</a>
     </h3>

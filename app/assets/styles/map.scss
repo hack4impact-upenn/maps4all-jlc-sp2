@@ -1,5 +1,6 @@
 $accent-color: #2C9FA3;
-$font-choice: Roboto;
+$accent-color-light: #2DBDC2;
+$font-choice: 'Nunito Sans', sans-serif;
 $font-size: 14px;
 
 /******** GENERAL MAP/LIST GRID STYLES *************/
@@ -9,7 +10,7 @@ $font-size: 14px;
   width: 100%;
 
   #left-column {
-    background-color: #EEEEEE; // TODO: change
+    background-color: #EEEEEE;
     border: 1px solid #CCCCCC;
     height: 100%;
     overflow-y: scroll;
@@ -52,6 +53,10 @@ $font-size: 14px;
   font-weight: 400;
 }
 
+#search-user-resources:hover {
+  background-color: #2DBDC2;
+}
+
 // Resource name search
 #resource-search {
   background-color: #F8F8F8;
@@ -85,6 +90,10 @@ $font-size: 14px;
   text-decoration: none;
 }
 
+#advanced-filters-showhide:hover {
+  color: $accent-color-light;
+}
+
 .checkbox-option {
   margin-right: 5px;
 }
@@ -108,7 +117,7 @@ $font-size: 14px;
 
 /*************** LIST STYLES ****************/
 #list {
-  height: 100%;
+  margin-bottom: 0px;
   margin-top: 0px;
 }
 
@@ -156,6 +165,9 @@ $font-size: 14px;
   }
 }
 
+#list > .item.list-resource:hover {
+  background-color: #fff;
+}
 
 /*************** MAP STYLES ****************/
 #map {
@@ -168,7 +180,11 @@ $font-size: 14px;
 // Resource marker
 .marker-info {
   font-family: $font-choice;
-  padding: 0.25em;
+  padding: 0.25em 0.25em 0em;
+
+  .ui.header {
+    font-family: $font-choice;
+  }
 }
 
 #marker-resource-name, #marker-resource-info {
@@ -176,13 +192,14 @@ $font-size: 14px;
 }
 
 .more-info {
+  font-family: $font-choice;
   color: $accent-color;
   cursor: pointer;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .more-info:hover {
-  color: $accent-color;
+  color: $accent-color-light;
 }
 
 /*************** RESOURCE VIEW SPECIFIC STYLES ****************/
@@ -191,7 +208,7 @@ $font-size: 14px;
   background-color: #F8F8F8;
   border: solid #CCCCCC;
   border-width: 1px 1px 1px 0;
-  font-family: $font-choice;
+  font-family: $font-choice!important;
   height: 100%;
   overflow: scroll;
   padding: 1.25em;
@@ -213,6 +230,7 @@ $font-size: 14px;
   }
 
   .sub.header {
+    font-family: $font-choice;
     font-size: $font-size;
   }
 
@@ -221,10 +239,15 @@ $font-size: 14px;
     margin-top: 0.4em;
     margin-bottom: 1em;
   }
+
   .ui.header  {
     color: $accent-color;
     font-family: $font-choice;
   }
+}
+
+#descriptor-name {
+  font-family: $font-choice;
 }
 
 #back-button {
@@ -233,6 +256,10 @@ $font-size: 14px;
   float: right;
   right: 1em;
   z-index: 2;
+}
+
+#back-button:hover {
+  color: $accent-color-light;
 }
 
 #single-resource-map {

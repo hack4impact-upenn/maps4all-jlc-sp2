@@ -36,6 +36,7 @@ function markerListener(marker, event) {
 
   // Marker "more information" link to detailed resource information view
   $(".more-info").click(function() {
+    $("list-specific-resource").css("background-color", "yellow");
     displayDetailedResourceView(marker);
   });
 }

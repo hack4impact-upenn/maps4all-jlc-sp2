@@ -2,8 +2,8 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-    <div class="ui text container">
-        <h1 class="ui header">
+    <div class="ui text container" id="about">
+        <h1 class="ui header" id="about-header">
         	About
         	{% if current_user.is_admin() %}
         		<div class="sub header">This is what the user will see on the About page</div>
