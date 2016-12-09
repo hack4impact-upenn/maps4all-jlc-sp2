@@ -5,14 +5,14 @@ $font-choice: 'Nunito Sans', sans-serif;
 $transform: translate(-50%,0%);
 
 .editor-user {
-    word-wrap: break-word;
+  word-wrap: break-word;
 }
 
 #about, #suggest-resource, #contact, #login {
   margin-bottom: 50px;
   position: absolute;
-  top: 75px;
   left: 50%;
+  top: 75px;
   -webkit-transform: $transform;
   -ms-transform: $transform;
   transform: $transform;
@@ -35,9 +35,9 @@ $transform: translate(-50%,0%);
 /****SUGGEST NEW RESOURCE****/
 #suggest-resource, #contact, #login {
   .ui.button {
-    font-weight: normal;
-    color: #FFFFFF;
     background-color: $accent-color;
+    color: #FFFFFF;
+    font-weight: normal;
   }
 
   .ui.button:hover {

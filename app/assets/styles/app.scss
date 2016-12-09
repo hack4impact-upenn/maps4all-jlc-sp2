@@ -8,7 +8,7 @@ $accent-color-light: #2DBDC2;
 $subheader-color: #AAAAAA;
 $font-choice: 'Nunito Sans', sans-serif;
 
-// STYLING THROUGHOUT
+// General Style
 body {
   font-family: $font-choice;
 
@@ -42,7 +42,6 @@ body {
   }
 }
 
-// General Style
 .ui.menu, .ui.header {
   font-family: $font-choice;
 }
@@ -65,8 +64,8 @@ nav {
 // Mobile nav
 nav .mobile.only.row {
   .ui.vertical.menu {
-      display: none;
-      margin-top: 40px;
+    display: none;
+    margin-top: 40px;
   }
 }
 
@@ -96,14 +95,15 @@ form, table {
   }
 
   .ui.button {
+    background-color: $accent-color;
+    color: #FFFFFF;
     font-family: $font-choice;
     font-weight: normal;
-    color: #FFFFFF;
-    background-color: $accent-color;
   }
 
   .ui.button:hover {
     background-color: $accent-color-light;
+    color: #FFFFFF;
   }
 }
 
@@ -111,7 +111,6 @@ form, table {
 .ui.basic.compact.button {
   font-family: $font-choice;
 }
-
 
 h1.ui.header, h2.ui.header {
   color: $accent-color;

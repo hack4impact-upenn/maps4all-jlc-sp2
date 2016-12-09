@@ -1,5 +1,6 @@
 $accent-color: #2C9FA3;
 $accent-color-light: #2DBDC2;
+$subheader-color: #AAAAAA;
 $font-choice: 'Nunito Sans', sans-serif;
 $transform: translate(-50%,0%);
 
@@ -21,39 +22,9 @@ $transform: translate(-50%,0%);
   font-family: $font-choice;
   margin-bottom: 50px;
   position: absolute;
-  top: 75px;
   left: 50%;
+  top: 75px;
   -webkit-transform: $transform;
   -ms-transform: $transform;
   transform: $transform;
-
-  p {
-    font-size: 14px;
-  }
-
-  h1 {
-    font-size: 30px;
-  }
-
-  h2 {
-    font-size: 24px;
-  }
-
-  h3 {
-    font-size: 18px;
-  }
-
-  a {
-    color: $accent-color;
-  }
-
-  a:hover {
-    color: $accent-color-light;
-  }
-}
-
-#admin-home {
-  .ui.padded.segment {
-    font-family: $font-choice;
-  }
 }
