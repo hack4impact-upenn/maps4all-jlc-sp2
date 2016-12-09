@@ -2,11 +2,11 @@
 {% import 'macros/form_macros.html' as f %}
 
 {% block content %}
-  <div class="ui text container">
-    <a class="ui basic compact button" href="{{ url_for('main.index') }}">
+  <div class="ui text container" id="suggest-resource">
+    <!--<a class="ui basic compact button" href="{{ url_for('main.index') }}">
       <i class="caret left icon"></i>
       Back
-    </a>
+    </a>-->
     <h1>
       {% if name %}
         Suggestion for {{ name }}
@@ -17,11 +17,11 @@
   <!-- <p>How much information do you know about this resource? </p> -->
   <!--   <button class="ui button basic-button">Basic</button>
     <button class="ui button advanced-button">Advanced</button> -->
-    <div class="basic-form">
+    <div class="basic-form" id="suggest-resource-form">
       {{ f.render_form(basic_form) }}
     </div>
     <!-- <div class="advanced-form">
-      {{ f.render_form(advanced_form) }} 
+      {{ f.render_form(advanced_form) }}
     </div> -->
   </div>
 

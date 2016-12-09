@@ -3,6 +3,50 @@ $mobile-breakpoint:        768px;
 $tablet-breakpoint:        992px;
 $small-monitor-breakpoint: 1200px;
 
+$accent-color: #2C9FA3;
+$accent-color-light: #2DBDC2;
+$subheader-color: #AAAAAA;
+$font-choice: 'Nunito Sans', sans-serif;
+
+// STYLING THROUGHOUT
+body {
+  font-family: $font-choice;
+
+  a, h1 {
+    color: $accent-color;
+    font-family: $font-choice;
+  }
+
+  a:hover {
+    color: $accent-color-light;
+  }
+
+  h2, h3 {
+    font-family: $font-choice;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+}
+
+// General Style
+.ui.menu, .ui.header {
+  font-family: $font-choice;
+}
+
 // General nav
 nav {
   margin-bottom: 40px !important;
@@ -29,6 +73,7 @@ nav .mobile.only.row {
 // Flashes
 .flashes > .ui.message:last-of-type {
   float: right;
+  font-family: $font-choice;
   overflow: visible;
   position: absolute;
   z-index: 1000;
@@ -42,4 +87,32 @@ table.selectable tr:hover {
 // Multiple option selector placeholder
 .ui.dropdown > .text {
     color: gray;
+}
+
+// Forms
+form, table {
+  .field, input, textarea {
+    font-family: $font-choice!important;
+  }
+
+  .ui.button {
+    font-family: $font-choice;
+    font-weight: normal;
+    color: #FFFFFF;
+    background-color: $accent-color;
+  }
+
+  .ui.button:hover {
+    background-color: $accent-color-light;
+  }
+}
+
+// Buttons
+.ui.basic.compact.button {
+  font-family: $font-choice;
+}
+
+
+h1.ui.header, h2.ui.header {
+  color: $accent-color;
 }

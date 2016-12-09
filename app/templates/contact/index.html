@@ -3,7 +3,7 @@
 {% import 'macros/form_macros.html' as f %}
 
 {% block content %}
-    <div class="ui text container">
+    <div class="ui text container" id="contact">
         <h1 class="ui header">
         	Contact Us
         	{% if current_user.is_admin() %}
@@ -15,7 +15,7 @@
         {% endif %}
         {{ page.render_inline_editor(editable_html_obj, current_user) }}
         {% if not current_user.is_admin() %}
-            <div class="ui divider"></div>
+            <!--<div class="ui divider"></div>--> 
             {{ f.render_form(form) }}
         {% else %}
             <h3>Add New Contact Category</h3>

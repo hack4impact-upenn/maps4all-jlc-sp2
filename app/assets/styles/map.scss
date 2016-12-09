@@ -222,6 +222,10 @@ $font-size: 14px;
     color: $accent-color;
   }
 
+  a:hover {
+    color: $accent-color-light;
+  }
+
   #resource-name {
     display: inline;
     font-size: 36px;

@@ -1,22 +1,50 @@
 $accent-color: #2C9FA3;
 $accent-color-light: #2DBDC2;
+$subheader-color: #AAAAAA;
 $font-choice: 'Nunito Sans', sans-serif;
-$transform: translate(-50%,-50%);
+$transform: translate(-50%,0%);
 
 .editor-user {
     word-wrap: break-word;
 }
 
-#about {
-  //background-color: #eee;
-  position: absolute;;
-  top: 200px;
+#about, #suggest-resource, #contact, #login {
+  margin-bottom: 50px;
+  position: absolute;
+  top: 75px;
   left: 50%;
   -webkit-transform: $transform;
   -ms-transform: $transform;
   transform: $transform;
 }
 
+/****ABOUT****/
 #about-header {
+  color: $accent-color;
+}
+
+#editor-about {
+  font-family: $font-choice;
+
+  h1, h2, h3 {
+    color: $subheader-color;
+    margin-bottom: 8px;
+  }
+}
+
+/****SUGGEST NEW RESOURCE****/
+#suggest-resource, #contact, #login {
+  .ui.button {
+    font-weight: normal;
+    color: #FFFFFF;
+    background-color: $accent-color;
+  }
+
+  .ui.button:hover {
+    background-color: $accent-color-light;
+  }
+}
+
+#suggest-resource-form {
   font-family: $font-choice;
 }
