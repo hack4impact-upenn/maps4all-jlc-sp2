@@ -9,11 +9,7 @@
 }
 
 @media -sass-debug-info{filename{}line{font-family:\0000310}}
-<<<<<<< HEAD
-#editor-about-admin, #editor-contact-admin #editor-health, #editor-rights {
-=======
 .editor-admin {
->>>>>>> master
   min-height: 100px;
   word-wrap: break-word;
 }
