@@ -19,8 +19,8 @@
   font-family: "Nunito Sans", sans-serif;
   margin-bottom: 50px;
   position: absolute;
-  top: 75px;
   left: 50%;
+  top: 75px;
   -webkit-transform: translate(-50%, 0%);
   -ms-transform: translate(-50%, 0%);
   transform: translate(-50%, 0%);
@@ -311,13 +311,8 @@ h1.ui.header, h2.ui.header {
   vertical-align: middle;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003168}}
-#list > .item.list-resource:hover {
-  background-color: #fff;
-}
-
 /*************** MAP STYLES ****************/
-@media -sass-debug-info{filename{}line{font-family:\00003173}}
+@media -sass-debug-info{filename{}line{font-family:\00003169}}
 #map {
   border: solid #CCCCCC;
   border-width: 1px 1px 1px 0;
@@ -325,22 +320,22 @@ h1.ui.header, h2.ui.header {
   width: 100%;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003181}}
+@media -sass-debug-info{filename{}line{font-family:\00003177}}
 .marker-info {
   font-family: "Nunito Sans", sans-serif;
   padding: 0.25em 0.25em 0em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003185}}
+@media -sass-debug-info{filename{}line{font-family:\00003181}}
 .marker-info .ui.header {
   font-family: "Nunito Sans", sans-serif;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003190}}
+@media -sass-debug-info{filename{}line{font-family:\00003186}}
 #marker-resource-name, #marker-resource-info {
   font-family: "Nunito Sans", sans-serif;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003194}}
+@media -sass-debug-info{filename{}line{font-family:\00003190}}
 .more-info {
   font-family: "Nunito Sans", sans-serif;
   color: #2C9FA3;
@@ -348,13 +343,13 @@ h1.ui.header, h2.ui.header {
   text-decoration: none;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003201}}
+@media -sass-debug-info{filename{}line{font-family:\00003197}}
 .more-info:hover {
   color: #2DBDC2;
 }
 
 /*************** RESOURCE VIEW SPECIFIC STYLES ****************/
-@media -sass-debug-info{filename{}line{font-family:\00003207}}
+@media -sass-debug-info{filename{}line{font-family:\00003203}}
 #resource-info {
   background-color: #F8F8F8;
   border: solid #CCCCCC;
@@ -364,48 +359,48 @@ h1.ui.header, h2.ui.header {
   overflow: scroll;
   padding: 1.25em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003217}}
+@media -sass-debug-info{filename{}line{font-family:\00003213}}
 #resource-info > .ui.header > .sub.header > .ui.label {
   margin-left: 0px;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003221}}
+@media -sass-debug-info{filename{}line{font-family:\00003217}}
 #resource-info a {
   color: #2C9FA3;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003225}}
+@media -sass-debug-info{filename{}line{font-family:\00003221}}
 #resource-info a:hover {
   color: #2DBDC2;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003229}}
+@media -sass-debug-info{filename{}line{font-family:\00003225}}
 #resource-info #resource-name {
   display: inline;
   font-size: 36px;
   padding-bottom: 1em;
   padding-top: 1em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003236}}
+@media -sass-debug-info{filename{}line{font-family:\00003232}}
 #resource-info .sub.header {
   font-family: "Nunito Sans", sans-serif;
   font-size: 14px;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003241}}
+@media -sass-debug-info{filename{}line{font-family:\00003237}}
 #resource-info .ui.label {
   font-size: 14px;
   margin-top: 0.4em;
   margin-bottom: 1em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003247}}
+@media -sass-debug-info{filename{}line{font-family:\00003243}}
 #resource-info .ui.header {
   color: #2C9FA3;
   font-family: "Nunito Sans", sans-serif;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003253}}
+@media -sass-debug-info{filename{}line{font-family:\00003249}}
 #descriptor-name {
   font-family: "Nunito Sans", sans-serif;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003257}}
+@media -sass-debug-info{filename{}line{font-family:\00003253}}
 #back-button {
   color: #2C9FA3;
   display: inline-block;
@@ -414,12 +409,12 @@ h1.ui.header, h2.ui.header {
   z-index: 2;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003265}}
+@media -sass-debug-info{filename{}line{font-family:\00003261}}
 #back-button:hover {
   color: #2DBDC2;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003269}}
+@media -sass-debug-info{filename{}line{font-family:\00003265}}
 #single-resource-map {
   height: 400px;
   width: 100%;
@@ -431,11 +426,11 @@ h1.ui.header, h2.ui.header {
 }
 
 @media -sass-debug-info{filename{}line{font-family:\0000311}}
-#about, #suggest-resource, #contact, #login {
+#about, #suggest-resource, #contact, #login, #reset-password {
   margin-bottom: 50px;
   position: absolute;
-  top: 75px;
   left: 50%;
+  top: 75px;
   -webkit-transform: translate(-50%, 0%);
   -ms-transform: translate(-50%, 0%);
   transform: translate(-50%, 0%);
@@ -460,9 +455,9 @@ h1.ui.header, h2.ui.header {
 /****SUGGEST NEW RESOURCE****/
 @media -sass-debug-info{filename{}line{font-family:\0000337}}
 #suggest-resource .ui.button, #contact .ui.button, #login .ui.button {
-  font-weight: normal;
-  color: #FFFFFF;
   background-color: #2C9FA3;
+  color: #FFFFFF;
+  font-weight: normal;
 }
 @media -sass-debug-info{filename{}line{font-family:\0000343}}
 #suggest-resource .ui.button:hover, #contact .ui.button:hover, #login .ui.button:hover {
