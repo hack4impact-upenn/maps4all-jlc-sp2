@@ -18,18 +18,17 @@ $transform: translate(-50%,0%);
   transform: $transform;
 }
 
-/****ABOUT****/
-#about-header {
-  color: $accent-color;
-}
-
-#editor-about {
+#about, #health, #rights {
   font-family: $font-choice;
 
   h1, h2, h3 {
     color: $subheader-color;
     margin-bottom: 8px;
   }
+}
+
+#about-header, #health-header, #rights-header {
+  color: $accent-color!important;
 }
 
 /****SUGGEST NEW RESOURCE****/

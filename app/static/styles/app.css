@@ -108,7 +108,7 @@ table.selectable tr:hover {
 
 @media -sass-debug-info{filename{}line{font-family:\0000393}}
 form .field, form input, form textarea, table .field, table input, table textarea {
-  font-family: "Nunito Sans", sans-serif !important;
+  font-family: "Nunito Sans", sans-serif;
 }
 @media -sass-debug-info{filename{}line{font-family:\0000397}}
 form .ui.button, table .ui.button {
@@ -373,7 +373,7 @@ h1.ui.header, h2.ui.header {
   background-color: #F8F8F8;
   border: solid #CCCCCC;
   border-width: 1px 1px 1px 0;
-  font-family: "Nunito Sans", sans-serif !important;
+  font-family: "Nunito Sans", sans-serif;
   height: 100%;
   overflow: scroll;
   padding: 1.25em;
@@ -488,35 +488,34 @@ h1.ui.header, h2.ui.header {
   transform: translate(-50%, 0%);
 }
 
-/****ABOUT****/
-@media -sass-debug-info{filename{}line{font-family:\0000322}}
-#about-header {
-  color: #2C9FA3;
-}
-
-@media -sass-debug-info{filename{}line{font-family:\0000326}}
-#editor-about {
+@media -sass-debug-info{filename{}line{font-family:\0000321}}
+#about, #health, #rights {
   font-family: "Nunito Sans", sans-serif;
 }
-@media -sass-debug-info{filename{}line{font-family:\0000329}}
-#editor-about h1, #editor-about h2, #editor-about h3 {
+@media -sass-debug-info{filename{}line{font-family:\0000324}}
+#about h1, #about h2, #about h3, #health h1, #health h2, #health h3, #rights h1, #rights h2, #rights h3 {
   color: #AAAAAA;
   margin-bottom: 8px;
 }
 
+@media -sass-debug-info{filename{}line{font-family:\0000330}}
+#about-header, #health-header, #rights-header {
+  color: #2C9FA3 !important;
+}
+
 /****SUGGEST NEW RESOURCE****/
-@media -sass-debug-info{filename{}line{font-family:\0000337}}
+@media -sass-debug-info{filename{}line{font-family:\0000336}}
 #suggest-resource .ui.button, #contact .ui.button, #login .ui.button {
   background-color: #2C9FA3;
   color: #FFFFFF;
   font-weight: normal;
 }
-@media -sass-debug-info{filename{}line{font-family:\0000343}}
+@media -sass-debug-info{filename{}line{font-family:\0000342}}
 #suggest-resource .ui.button:hover, #contact .ui.button:hover, #login .ui.button:hover {
   background-color: #2DBDC2;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000348}}
+@media -sass-debug-info{filename{}line{font-family:\0000347}}
 #suggest-resource-form {
   font-family: "Nunito Sans", sans-serif;
 }
