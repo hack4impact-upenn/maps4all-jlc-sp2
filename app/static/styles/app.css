@@ -378,17 +378,25 @@ h1.ui.header, h2.ui.header {
   padding-bottom: 1em;
   padding-top: 1em;
 }
+
 @media -sass-debug-info{filename{}line{font-family:\00003232}}
+#resource-info .successMessage {
+  display: none;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\00003218}}
 #resource-info .sub.header {
   font-family: "Nunito Sans", sans-serif;
   font-size: 14px;
 }
+
 @media -sass-debug-info{filename{}line{font-family:\00003237}}
 #resource-info .ui.label {
   font-size: 14px;
   margin-top: 0.4em;
   margin-bottom: 1em;
 }
+
 @media -sass-debug-info{filename{}line{font-family:\00003243}}
 #resource-info .ui.header {
   color: #2C9FA3;
@@ -408,6 +416,7 @@ h1.ui.header, h2.ui.header {
   right: 1em;
   z-index: 2;
 }
+
 
 @media -sass-debug-info{filename{}line{font-family:\00003261}}
 #back-button:hover {

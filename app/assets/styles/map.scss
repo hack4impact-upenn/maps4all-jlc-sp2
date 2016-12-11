@@ -229,6 +229,9 @@ $font-size: 14px;
     padding-top: 1em;
   }
 
+  .successMessage{
+    display: none;
+  }
   .sub.header {
     font-family: $font-choice;
     font-size: $font-size;
@@ -244,6 +247,7 @@ $font-size: 14px;
     color: $accent-color;
     font-family: $font-choice;
   }
+
 }
 
 #descriptor-name {
