@@ -2,7 +2,7 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-    <div class="ui text container">
+    <div class="ui text container" id="rights">
         <h1 class="ui header">
         	Know Your Rights
         	{% if current_user.is_admin() %}

@@ -2,7 +2,7 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-    <div class="ui text container">
+    <div class="ui text container" id="health">
         <h1 class="ui header">
         	Health Insurance
         	{% if current_user.is_admin() %}

@@ -1,5 +1,6 @@
 $accent-color: #2C9FA3;
 $accent-color-light: #2DBDC2;
+$accent-color-grey: #EEEEEE;
 $font-choice: 'Nunito Sans', sans-serif;
 $font-size: 14px;
 
@@ -140,10 +141,6 @@ $font-size: 14px;
     }
   }
 
-  .header {
-    display: inline-block;
-  }
-
   .ui.label {
     background-color: #DDDDDD;
     display: inline-block;
@@ -163,6 +160,17 @@ $font-size: 14px;
     right: 1em;
     vertical-align: middle;
   }
+
+  .header {
+    display: inline-block;
+  }
+
+}
+
+#category, #avg_rating {
+  height: 2em;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 /*************** MAP STYLES ****************/
@@ -181,21 +189,34 @@ $font-size: 14px;
   .ui.header {
     font-family: $font-choice;
   }
+
+  #address-marker {
+    margin-bottom: 2px;
+  }
+
+  #more-info-label {
+    background-color: $accent-color;
+    color: white;
+    cursor: pointer;
+    font-family: $font-choice;
+    font-weight: 300;
+    margin-left: -2px;
+    text-decoration: none;
+  }
+
+  #more-info-label:hover {
+    background-color: $accent-color-light;
+  }
 }
 
 #marker-resource-name, #marker-resource-info {
   font-family: $font-choice;
 }
 
-.more-info {
-  font-family: $font-choice;
+#avg_rating-marker {
   color: $accent-color;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.more-info:hover {
-  color: $accent-color-light;
+  margin-left: -2px;
+  margin-right: 4px;
 }
 
 /*************** RESOURCE VIEW SPECIFIC STYLES ****************/
@@ -232,6 +253,7 @@ $font-size: 14px;
   .successMessage{
     display: none;
   }
+
   .sub.header {
     font-family: $font-choice;
     font-size: $font-size;
@@ -269,4 +291,28 @@ $font-size: 14px;
 #single-resource-map {
   height: 400px;
   width: 100%;
+}
+
+#user-rating, .successMessage {
+  margin-bottom: 1em;
+}
+
+#user-rating {
+  background-color: #F8F8F8;
+  box-shadow: none;
+}
+
+#avg_rating {
+  color: $accent-color;
+}
+
+#submit-rating {
+  background-color: $accent-color;
+  color: #fff;
+  font-family: $font-choice;
+  font-weight: 400;
+}
+
+#submit-rating:hover {
+  background-color: $accent-color-light;
 }

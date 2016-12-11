@@ -125,8 +125,8 @@ function submitReview(rating, review, id){
      contentType: 'application/json',
      dataType: 'json',
      method: 'POST'
-  }); 
-  $(".userRating").hide();   
+  });
+  $(".userRating").hide();
   $(".successMessage").show();
 }
 
