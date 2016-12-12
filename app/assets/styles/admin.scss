@@ -1,3 +1,9 @@
+$accent-color: #2C9FA3;
+$accent-color-light: #2DBDC2;
+$subheader-color: #AAAAAA;
+$font-choice: 'Nunito Sans', sans-serif;
+$transform: translate(-50%,0%);
+
 // About page
 .updated-alert, .ui.button.cancel-edit, .ui.button.end-edit {
   display: none;
@@ -10,4 +16,15 @@
 .editor-admin {
   min-height: 100px;
   word-wrap: break-word;
+}
+
+#admin-home {
+  font-family: $font-choice;
+  left: 50%;
+  margin-bottom: 50px;
+  position: absolute;
+  top: 75px;
+  transform: $transform;
+  -ms-transform: $transform;
+  -webkit-transform: $transform;
 }

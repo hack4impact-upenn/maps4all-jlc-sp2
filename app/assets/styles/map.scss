@@ -1,5 +1,7 @@
 $accent-color: #2C9FA3;
-$font-choice: Roboto;
+$accent-color-light: #2DBDC2;
+$accent-color-grey: #EEEEEE;
+$font-choice: 'Nunito Sans', sans-serif;
 $font-size: 14px;
 
 /******** GENERAL MAP/LIST GRID STYLES *************/
@@ -9,7 +11,7 @@ $font-size: 14px;
   width: 100%;
 
   #left-column {
-    background-color: #EEEEEE; // TODO: change
+    background-color: #EEEEEE;
     border: 1px solid #CCCCCC;
     height: 100%;
     overflow-y: scroll;
@@ -44,14 +46,6 @@ $font-size: 14px;
   height: 40px;
 }
 
-// button
-#search-user-resources {
-  background-color: $accent-color;
-  color: #fff;
-  font-family: $font-choice;
-  font-weight: 400;
-}
-
 // Resource name search
 #resource-search {
   background-color: #F8F8F8;
@@ -59,7 +53,6 @@ $font-size: 14px;
 }
 
 .descriptor-group {
-  font-family: $font-choice;
   margin: 3px;
 
   h5 {
@@ -80,9 +73,12 @@ $font-size: 14px;
 #advanced-filters-showhide {
   color: $accent-color;
   cursor: pointer;
-  font-family: $font-choice;
   margin-bottom: 0.5em;
   text-decoration: none;
+}
+
+#advanced-filters-showhide:hover {
+  color: $accent-color-light;
 }
 
 .checkbox-option {
@@ -95,7 +91,6 @@ $font-size: 14px;
 
 #search-divider, #results-divider {
   color: #555;
-  font-family: $font-choice;
 }
 
 #results-divider {
@@ -108,7 +103,7 @@ $font-size: 14px;
 
 /*************** LIST STYLES ****************/
 #list {
-  height: 100%;
+  margin-bottom: 0px;
   margin-top: 0px;
 }
 
@@ -131,20 +126,11 @@ $font-size: 14px;
     }
   }
 
-  .header {
-    display: inline-block;
-  }
-
   .ui.label {
     background-color: #DDDDDD;
     display: inline-block;
     margin-left: 0;
     margin-top: 0.5em;
-  }
-
-  a, a:hover, a:active {
-    color: $accent-color;
-    font-family: $font-choice;
   }
 
   #resource-list-chevron {
@@ -154,8 +140,18 @@ $font-size: 14px;
     right: 1em;
     vertical-align: middle;
   }
+
+  .header {
+    display: inline-block;
+  }
+
 }
 
+#category, #avg_rating {
+  height: 2em;
+  display: inline-block;
+  vertical-align: middle;
+}
 
 /*************** MAP STYLES ****************/
 #map {
@@ -167,22 +163,32 @@ $font-size: 14px;
 
 // Resource marker
 .marker-info {
-  font-family: $font-choice;
-  padding: 0.25em;
+  padding: 0.25em 0.25em 0em;
+
+  #address-marker {
+    margin-bottom: 2px;
+  }
+
+  #more-info-label {
+    background-color: $accent-color;
+    color: white;
+    cursor: pointer;
+    font-weight: 300;
+    position: relative;
+    right: 8px;
+    text-decoration: none;
+  }
+
+  #more-info-label:hover {
+    background-color: $accent-color-light;
+  }
 }
 
-#marker-resource-name, #marker-resource-info {
-  font-family: $font-choice;
-}
-
-.more-info {
+#avg_rating-marker {
   color: $accent-color;
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-.more-info:hover {
-  color: $accent-color;
+  margin-right: 0px;
+  position: relative;
+  right: 8px;
 }
 
 /*************** RESOURCE VIEW SPECIFIC STYLES ****************/
@@ -191,7 +197,6 @@ $font-size: 14px;
   background-color: #F8F8F8;
   border: solid #CCCCCC;
   border-width: 1px 1px 1px 0;
-  font-family: $font-choice;
   height: 100%;
   overflow: scroll;
   padding: 1.25em;
@@ -201,10 +206,6 @@ $font-size: 14px;
     margin-left: 0px;
   }
 
-  a {
-    color: $accent-color;
-  }
-
   #resource-name {
     display: inline;
     font-size: 36px;
@@ -212,9 +213,10 @@ $font-size: 14px;
     padding-top: 1em;
   }
 
-  .successMessage{
+  .successMessage {
     display: none;
   }
+
   .sub.header {
     font-size: $font-size;
   }
@@ -224,11 +226,15 @@ $font-size: 14px;
     margin-top: 0.4em;
     margin-bottom: 1em;
   }
+
   .ui.header  {
     color: $accent-color;
-    font-family: $font-choice;
   }
 
+}
+
+#descriptor-name {
+  font-family: $font-choice;
 }
 
 #back-button {
@@ -239,7 +245,34 @@ $font-size: 14px;
   z-index: 2;
 }
 
+#back-button:hover {
+  color: $accent-color-light;
+}
+
 #single-resource-map {
   height: 400px;
   width: 100%;
+}
+
+#user-rating, .successMessage {
+  margin-bottom: 1em;
+}
+
+#user-rating {
+  background-color: #F8F8F8;
+  box-shadow: none;
+}
+
+#avg_rating {
+  color: $accent-color;
+}
+
+#submit-rating {
+  background-color: $accent-color;
+  color: #fff;
+  font-weight: 400;
+}
+
+#submit-rating:hover {
+  background-color: $accent-color-light;
 }
