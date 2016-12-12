@@ -12,10 +12,10 @@ $transform: translate(-50%,0%);
   margin-bottom: 50px;
   left: 50%;
   position: absolute;
-  -webkit-transform: $transform;
-  -ms-transform: $transform;
-  transform: $transform;
   top: 75px;
+  transform: $transform;
+  -ms-transform: $transform;
+  -webkit-transform: $transform;
 }
 
 .static-page {
