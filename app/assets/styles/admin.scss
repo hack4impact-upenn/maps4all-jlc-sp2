@@ -20,11 +20,11 @@ $transform: translate(-50%,0%);
 
 #admin-home {
   font-family: $font-choice;
+  left: 50%;
   margin-bottom: 50px;
   position: absolute;
-  left: 50%;
-  top: 75px;
   -webkit-transform: $transform;
   -ms-transform: $transform;
   transform: $transform;
+  top: 75px;
 }

@@ -8,42 +8,27 @@ $transform: translate(-50%,0%);
   word-wrap: break-word;
 }
 
-#about, #suggest-resource, #contact, #login, #reset-password, #health, #rights {
+.static-page, .form-page {
   margin-bottom: 50px;
-  position: absolute;
   left: 50%;
-  top: 75px;
+  position: absolute;
   -webkit-transform: $transform;
   -ms-transform: $transform;
   transform: $transform;
+  top: 75px;
 }
 
-#about, #health, #rights {
-  font-family: $font-choice;
+.static-page {
+  p {
+    font-family: $font-choice;
+  }
 
   h1, h2, h3 {
     color: $subheader-color;
     margin-bottom: 8px;
   }
-}
 
-#about-header, #health-header, #rights-header {
-  color: $accent-color!important;
-}
-
-/****SUGGEST NEW RESOURCE****/
-#suggest-resource, #contact, #login {
-  .ui.button {
-    background-color: $accent-color;
-    color: #FFFFFF;
-    font-weight: normal;
+  .ui.header {
+    color: $accent-color;
   }
-
-  .ui.button:hover {
-    background-color: $accent-color-light;
-  }
-}
-
-#suggest-resource-form {
-  font-family: $font-choice;
 }

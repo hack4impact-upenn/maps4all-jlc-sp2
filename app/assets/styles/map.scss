@@ -46,18 +46,6 @@ $font-size: 14px;
   height: 40px;
 }
 
-// button
-#search-user-resources {
-  background-color: $accent-color;
-  color: #fff;
-  font-family: $font-choice;
-  font-weight: 400;
-}
-
-#search-user-resources:hover {
-  background-color: #2DBDC2;
-}
-
 // Resource name search
 #resource-search {
   background-color: #F8F8F8;
@@ -65,7 +53,6 @@ $font-size: 14px;
 }
 
 .descriptor-group {
-  font-family: $font-choice;
   margin: 3px;
 
   h5 {
@@ -86,7 +73,6 @@ $font-size: 14px;
 #advanced-filters-showhide {
   color: $accent-color;
   cursor: pointer;
-  font-family: $font-choice;
   margin-bottom: 0.5em;
   text-decoration: none;
 }
@@ -105,7 +91,6 @@ $font-size: 14px;
 
 #search-divider, #results-divider {
   color: #555;
-  font-family: $font-choice;
 }
 
 #results-divider {
@@ -148,11 +133,6 @@ $font-size: 14px;
     margin-top: 0.5em;
   }
 
-  a, a:hover, a:active {
-    color: $accent-color;
-    font-family: $font-choice;
-  }
-
   #resource-list-chevron {
     float: right;
     margin-top: 1.5em;
@@ -183,12 +163,7 @@ $font-size: 14px;
 
 // Resource marker
 .marker-info {
-  font-family: $font-choice;
   padding: 0.25em 0.25em 0em;
-
-  .ui.header {
-    font-family: $font-choice;
-  }
 
   #address-marker {
     margin-bottom: 2px;
@@ -198,9 +173,9 @@ $font-size: 14px;
     background-color: $accent-color;
     color: white;
     cursor: pointer;
-    font-family: $font-choice;
     font-weight: 300;
-    margin-left: -2px;
+    position: relative;
+    right: 8px;
     text-decoration: none;
   }
 
@@ -209,14 +184,11 @@ $font-size: 14px;
   }
 }
 
-#marker-resource-name, #marker-resource-info {
-  font-family: $font-choice;
-}
-
 #avg_rating-marker {
   color: $accent-color;
-  margin-left: -2px;
-  margin-right: 4px;
+  margin-right: 0px;
+  position: relative;
+  right: 8px;
 }
 
 /*************** RESOURCE VIEW SPECIFIC STYLES ****************/
@@ -225,7 +197,6 @@ $font-size: 14px;
   background-color: #F8F8F8;
   border: solid #CCCCCC;
   border-width: 1px 1px 1px 0;
-  font-family: $font-choice;
   height: 100%;
   overflow: scroll;
   padding: 1.25em;
@@ -235,14 +206,6 @@ $font-size: 14px;
     margin-left: 0px;
   }
 
-  a {
-    color: $accent-color;
-  }
-
-  a:hover {
-    color: $accent-color-light;
-  }
-
   #resource-name {
     display: inline;
     font-size: 36px;
@@ -250,12 +213,11 @@ $font-size: 14px;
     padding-top: 1em;
   }
 
-  .successMessage{
+  .successMessage {
     display: none;
   }
 
   .sub.header {
-    font-family: $font-choice;
     font-size: $font-size;
   }
 
@@ -267,7 +229,6 @@ $font-size: 14px;
 
   .ui.header  {
     color: $accent-color;
-    font-family: $font-choice;
   }
 
 }
@@ -309,7 +270,6 @@ $font-size: 14px;
 #submit-rating {
   background-color: $accent-color;
   color: #fff;
-  font-family: $font-choice;
   font-weight: 400;
 }
 

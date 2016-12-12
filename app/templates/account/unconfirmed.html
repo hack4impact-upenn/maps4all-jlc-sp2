@@ -2,6 +2,7 @@
 {% import 'macros/form_macros.html' as f %}
 
 {% block content %}
+  <div class="form-page">
     <div class="ui text container">
 
         <div class="ui padded raised segment">
@@ -18,4 +19,5 @@
             <a class="ui small button" href="{{ url_for('account.confirm_request') }}">Resend confirmation email</a>
         </div>
     </div>
+  </div>
 {% endblock %}

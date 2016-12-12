@@ -53,7 +53,7 @@ nav {
 
 .ui.fixed.main.menu {
   background-color: #2C9FA3;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: $font-choice;
 }
 
 // Desktop nav
@@ -94,13 +94,6 @@ form, table {
     font-family: $font-choice!important;
   }
 
-  .ui.button {
-    background-color: $accent-color;
-    color: #FFFFFF;
-    font-family: $font-choice;
-    font-weight: normal;
-  }
-
   .ui.button:hover {
     background-color: $accent-color-light;
     color: #FFFFFF;
@@ -108,7 +101,16 @@ form, table {
 }
 
 // Buttons
-.ui.basic.compact.button {
+.ui.button {
+  background-color: $accent-color;
+  color: #FFFFFF;
+  font-family: $font-choice;
+  font-weight: normal;
+}
+
+.ui.button:hover {
+  background-color: $accent-color-light;
+  color: #FFFFFF;
   font-family: $font-choice;
 }
 
