@@ -344,6 +344,8 @@ function populateListDiv() {
   // Can only add handlers to elements in template after compilation
   $(".list-resource").each(function(i, element) {
     element.addEventListener('click', function() {
+      $('.list-resource').removeClass('list-selected');
+      $(this).addClass('list-selected');
       markerListener(markersToShow[i], 'click');
     });
   });

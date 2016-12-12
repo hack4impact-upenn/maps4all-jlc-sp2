@@ -145,6 +145,11 @@ $font-size: 14px;
     display: inline-block;
   }
 
+  &.list-selected {
+    .ui.header a, #resource-list-chevron a {
+      color: #000;
+    }
+  }
 }
 
 #category, #avg_rating {
