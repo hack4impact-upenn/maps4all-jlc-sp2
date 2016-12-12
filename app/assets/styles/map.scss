@@ -1,6 +1,8 @@
 $accent-color: #2C9FA3;
 $accent-color-light: #2DBDC2;
 $accent-color-grey: #EEEEEE;
+$accent-color-dark-grey: #555;
+$secondary-color: #EDA21C;
 $font-choice: 'Nunito Sans', sans-serif;
 $font-size: 14px;
 
@@ -11,7 +13,7 @@ $font-size: 14px;
   width: 100%;
 
   #left-column {
-    background-color: #EEEEEE;
+    background-color: $accent-color-grey;
     border: 1px solid #CCCCCC;
     height: 100%;
     overflow-y: scroll;
@@ -99,7 +101,7 @@ $font-size: 14px;
 }
 
 #search-divider, #results-divider {
-  color: #555;
+  color: $accent-color-dark-grey;
 }
 
 #results-divider {
@@ -154,9 +156,15 @@ $font-size: 14px;
     display: block;
   }
 
+  &:hover {
+    .ui.header a, #resource-list-chevron a {
+      color: $accent-color-dark-grey;
+    }
+  }
+
   &.list-selected {
     .ui.header a, #resource-list-chevron a {
-      color: #000;
+      color: $secondary-color;
     }
   }
 }
@@ -206,13 +214,31 @@ $font-size: 14px;
 }
 
 #map-footer {
-  background-color: #EEEEEE;
+  background-color: $accent-color-grey;
   display: none;
   overflow-y: auto;
   padding: 0.5em;
 
-  #mobile-list-btn p {
-    display: inline-block;
+  .marker-info .ui.header {
+    margin-bottom: 0.5em;
+  }
+
+  #mobile-list-btn {
+    background-color: $accent-color-grey;
+    border: none;
+    color: $accent-color-dark-grey;
+    cursor: pointer;
+    font-weight: normal;
+    margin-left: 0;
+    padding-left: 0;
+
+    p {
+      display: inline-block;
+    }
+
+    &:hover {
+      color: #000;
+    }
   }
 }
 
