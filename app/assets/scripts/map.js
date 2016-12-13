@@ -129,8 +129,11 @@ function displayDetailedResourceView(marker) {
     $("#resource-info").scrollTop(0); // reset scroll on div to top
     $('#back-button').click(function() {
       $("#map").show();
-      $('#map-footer').show();
       $("#resource-info").hide();
+
+      if ($(window).width() <= singleColBreakpoint) {
+        $('#map-footer').show();
+      }
       resizeMapListGrid();
     });
 
