@@ -2,7 +2,8 @@ $accent-color: #2C9FA3;
 $accent-color-light: #2DBDC2;
 $accent-color-grey: #EEEEEE;
 $accent-color-dark-grey: #555;
-$secondary-color: #EDA21C;
+$secondary-color: #FF937C;
+$secondary-color-light: #FFA491;
 $font-choice: 'Nunito Sans', sans-serif;
 $font-size: 14px;
 
@@ -139,15 +140,19 @@ $font-size: 14px;
     padding-right: 10px;
 
     .ui.small.label {
-      font-size: $font-size;
+      font-size: 12px;
     }
   }
 
   .ui.label {
-    background-color: #DDDDDD;
+    background-color: inherit;
+    border: 1px solid $accent-color-light;
+    color: $accent-color-light;
     display: inline-block;
+    font-weight: normal;
     margin-left: 0;
     margin-top: 0.5em;
+    padding-top: 0.4em;
   }
 
   #resource-list-chevron {
@@ -164,7 +169,7 @@ $font-size: 14px;
 
   &:hover {
     .ui.header a, #resource-list-chevron a {
-      color: $accent-color-dark-grey;
+      color: $accent-color-light;
     }
   }
 
@@ -198,7 +203,7 @@ $font-size: 14px;
   }
 
   #more-info-label {
-    background-color: $accent-color;
+    background-color: $secondary-color;
     color: white;
     cursor: pointer;
     font-weight: 300;
@@ -208,12 +213,15 @@ $font-size: 14px;
   }
 
   #more-info-label:hover {
-    background-color: $accent-color-light;
+    background-color: $secondary-color-light;
   }
 }
 
 #avg_rating-marker {
-  color: $accent-color;
+  background-color: inherit;
+  border: 1px solid $secondary-color-light;
+  color: $secondary-color-light;
+  font-size: 11px;
   margin-right: 0px;
   position: relative;
   right: 8px;
@@ -279,9 +287,14 @@ $font-size: 14px;
   }
 
   .ui.label {
+    background-color: inherit;
+    border: 1px solid $accent-color-light;
+    color: $accent-color-light;
     font-size: $font-size;
+    font-weight: normal;
     margin-top: 0.4em;
     margin-bottom: 1em;
+    padding-top: 0.4em;
   }
 
   .ui.header  {
