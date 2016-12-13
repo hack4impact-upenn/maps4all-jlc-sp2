@@ -31,8 +31,13 @@
             {% endfor %}
           </select>
         {% endif %}
-          <div id="advanced-filters-showhide">
+          <div id="advanced-filters-show">
+              <i class="plus icon"></i>
               Show Advanced Filters
+          </div>
+          <div id="advanced-filters-hide">
+              <i class="minus icon"></i>
+              Hide Advanced Filters
           </div>
           <div id="advanced-search" class="option-group-advanced">
               {% for o in options.keys() %}
@@ -208,13 +213,16 @@
       resizeMapListGrid();
     });
 
-    $('#advanced-filters-showhide').click(function() {
-      if ($(this).text() === 'Close Advanced Filters') {
-        $(this).text('Show Advanced Filters');
-      } else {
-        $(this).text('Close Advanced Filters');
-      }
-      $('.option-group-advanced').toggle();
+    $('#advanced-filters-show').click(function() {
+      $('#advanced-filters-show').hide();
+      $('#advanced-filters-hide').show();
+      $('#advanced-search').show();
+    });
+
+    $('#advanced-filters-hide').click(function() {
+      $('#advanced-filters-show').show();
+      $('#advanced-filters-hide').hide();
+      $('#advanced-search').hide();
     });
 
     // Placeholder text for descriptor dropdowns

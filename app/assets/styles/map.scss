@@ -3,6 +3,7 @@ $accent-color-light: #2DBDC2;
 $accent-color-grey: #EEEEEE;
 $font-choice: 'Nunito Sans', sans-serif;
 $font-size: 14px;
+$input-color: rgba(0, 0, 0, 0.4);
 
 /******** GENERAL MAP/LIST GRID STYLES *************/
 #map-list-grid {
@@ -37,9 +38,9 @@ $font-size: 14px;
 }
 
 /*************** SEARCH STYLES ****************/
-// Location search
-#pac-input, #resources-input {
+#pac-input, #resources-input, #resource-search .ui.dropdown > .text {
   background-color: #fff;
+  color: $input-color;
   float: left;
   font-family: $font-choice;
   font-size: 15px;
@@ -63,33 +64,25 @@ $font-size: 14px;
 
 // Resource option search
 .req-desc-name {
-  font-weight: bold;
   text-transform: capitalize;
 }
 
-.descriptor-group {
-  margin: 3px;
-
-  h5 {
-    font-family: $font-choice;
-    margin: 0 0 5px 0;
-  }
-}
-
-.option-group, .option-group-advanced {
+.option-group-advanced {
+  display: none;
   margin-bottom: 10px;
   margin-top: 10px;
 }
 
-.option-group-advanced {
-  display: none; // hide initially
-}
-
-#advanced-filters-showhide {
+#advanced-filters-show, #advanced-filters-hide {
   color: $accent-color;
   cursor: pointer;
   margin-bottom: 0.5em;
+  margin-top: 0.5em;
   text-decoration: none;
+}
+
+#advanced-filters-hide {
+  display: none;
 }
 
 #advanced-filters-showhide:hover {
