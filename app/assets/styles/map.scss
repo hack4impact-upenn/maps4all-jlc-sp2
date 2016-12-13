@@ -50,6 +50,7 @@ $input-color: rgba(0, 0, 0, 0.4);
 
 #pac-input:focus, #resources-input:focus, #search-resources-req-options:focus {
   border-color: $accent-color;
+  color: #555;
 }
 
 #location-search, #search-keyword, #resources-input {
