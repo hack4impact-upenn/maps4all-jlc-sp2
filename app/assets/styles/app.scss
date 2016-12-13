@@ -5,6 +5,8 @@ $small-monitor-breakpoint: 1200px;
 
 $accent-color: #2C9FA3;
 $accent-color-light: #2DBDC2;
+$accent-color-grey: #EEEEEE;
+$accent-color-dark-grey: #555;
 $subheader-color: #AAAAAA;
 $font-choice: 'Nunito Sans', sans-serif;
 
@@ -78,11 +80,15 @@ nav .mobile.only.row {
 }
 
 // Flashes
-.flashes > .ui.message:last-of-type {
-  float: right;
+.flashes > .row > .ui.message {
+  background-color: $accent-color-dark-grey;
+  box-shadow: none;
+  color: #fff;
   font-family: $font-choice;
   overflow: visible;
   position: absolute;
+  text-align: center;
+  width: 60%;
   z-index: 1000;
 }
 
