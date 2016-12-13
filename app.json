@@ -1,6 +1,6 @@
 {
-  "name": "maps4all",
-  "description": "Generalized application for displaying location-based resources on a map",
+  "name": "youthmattersphilly",
+  "description": "Maps4All for YouthMattersPhilly",
   "scripts": {
     "postdeploy": "python manage.py recreate_db && python manage.py setup_dev && python manage.py add_fake_data"
   },
