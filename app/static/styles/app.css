@@ -317,7 +317,7 @@ h1.ui.header, h2.ui.header {
   display: block;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003165}}
+@media -sass-debug-info{filename{}line{font-family:\00003164}}
 #category, #avg_rating {
   height: 2em;
   display: inline-block;
@@ -325,7 +325,7 @@ h1.ui.header, h2.ui.header {
 }
 
 /*************** MAP STYLES ****************/
-@media -sass-debug-info{filename{}line{font-family:\00003172}}
+@media -sass-debug-info{filename{}line{font-family:\00003171}}
 #map {
   border: solid #CCCCCC;
   border-width: 1px 1px 1px 0;
@@ -333,15 +333,15 @@ h1.ui.header, h2.ui.header {
   width: 100%;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003180}}
+@media -sass-debug-info{filename{}line{font-family:\00003179}}
 .marker-info {
   padding: 0.25em 0.25em 0em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003183}}
+@media -sass-debug-info{filename{}line{font-family:\00003182}}
 .marker-info #address-marker {
   margin-bottom: 2px;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003187}}
+@media -sass-debug-info{filename{}line{font-family:\00003186}}
 .marker-info #more-info-label {
   background-color: #2C9FA3;
   color: white;
@@ -351,12 +351,12 @@ h1.ui.header, h2.ui.header {
   right: 8px;
   text-decoration: none;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003197}}
+@media -sass-debug-info{filename{}line{font-family:\00003196}}
 .marker-info #more-info-label:hover {
   background-color: #2DBDC2;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003202}}
+@media -sass-debug-info{filename{}line{font-family:\00003201}}
 #avg_rating-marker {
   color: #2C9FA3;
   margin-right: 0px;
@@ -364,20 +364,20 @@ h1.ui.header, h2.ui.header {
   right: 8px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003209}}
+@media -sass-debug-info{filename{}line{font-family:\00003208}}
 #map-footer {
   background-color: #EEEEEE;
   display: none;
   overflow-y: auto;
   padding: 0.5em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003215}}
+@media -sass-debug-info{filename{}line{font-family:\00003214}}
 #map-footer #mobile-list-btn p {
   display: inline-block;
 }
 
 /*************** RESOURCE VIEW SPECIFIC STYLES ****************/
-@media -sass-debug-info{filename{}line{font-family:\00003222}}
+@media -sass-debug-info{filename{}line{font-family:\00003221}}
 #resource-info {
   background-color: #F8F8F8;
   border: solid #CCCCCC;
@@ -386,42 +386,42 @@ h1.ui.header, h2.ui.header {
   overflow: scroll;
   padding: 1.25em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003231}}
+@media -sass-debug-info{filename{}line{font-family:\00003230}}
 #resource-info > .ui.header > .sub.header > .ui.label {
   margin-left: 0px;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003235}}
+@media -sass-debug-info{filename{}line{font-family:\00003234}}
 #resource-info #resource-name {
   display: inline;
   font-size: 36px;
   padding-bottom: 1em;
   padding-top: 1em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003242}}
+@media -sass-debug-info{filename{}line{font-family:\00003241}}
 #resource-info .successMessage {
   display: none;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003246}}
+@media -sass-debug-info{filename{}line{font-family:\00003245}}
 #resource-info .sub.header {
   font-size: 14px;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003250}}
+@media -sass-debug-info{filename{}line{font-family:\00003249}}
 #resource-info .ui.label {
   font-size: 14px;
   margin-top: 0.4em;
   margin-bottom: 1em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003256}}
+@media -sass-debug-info{filename{}line{font-family:\00003255}}
 #resource-info .ui.header {
   color: #2C9FA3;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003262}}
+@media -sass-debug-info{filename{}line{font-family:\00003261}}
 #descriptor-name {
   font-family: "Nunito Sans", sans-serif;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003266}}
+@media -sass-debug-info{filename{}line{font-family:\00003265}}
 #back-button {
   color: #2C9FA3;
   display: inline-block;
@@ -430,41 +430,41 @@ h1.ui.header, h2.ui.header {
   z-index: 2;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003274}}
+@media -sass-debug-info{filename{}line{font-family:\00003273}}
 #back-button:hover {
   color: #2DBDC2;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003278}}
+@media -sass-debug-info{filename{}line{font-family:\00003277}}
 #single-resource-map {
   height: 400px;
   width: 100%;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003283}}
+@media -sass-debug-info{filename{}line{font-family:\00003282}}
 #user-rating, .successMessage {
   margin-bottom: 1em;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003287}}
+@media -sass-debug-info{filename{}line{font-family:\00003286}}
 #user-rating {
   background-color: #F8F8F8;
   box-shadow: none;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003292}}
+@media -sass-debug-info{filename{}line{font-family:\00003291}}
 #avg_rating {
   color: #2C9FA3;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003296}}
+@media -sass-debug-info{filename{}line{font-family:\00003295}}
 #submit-rating {
   background-color: #2C9FA3;
   color: #fff;
   font-weight: 400;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003302}}
+@media -sass-debug-info{filename{}line{font-family:\00003301}}
 #submit-rating:hover {
   background-color: #2DBDC2;
 }
