@@ -416,6 +416,11 @@ function populateListDiv() {
   // Can only add handlers to elements in template after compilation
   $(".list-resource").each(function(i, element) {
     element.addEventListener('click', function() {
+      $('.list-resource').removeClass('list-selected');
+
+      if ($(window).width() > singleColBreakpoint) {
+        $(this).addClass('list-selected');
+      }
       markerListener(markersToShow[i], 'click');
     });
   });
@@ -543,6 +548,10 @@ function listToMapSingleColumn() {
 
   $('#nav-to-list').show();
   $('#nav-to-map').hide();
+
+  if (infowindow) {
+    infowindow.close();
+  }
 }
 
 // Changing from map view to list view in single column mode
