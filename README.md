@@ -1,5 +1,5 @@
 # Maps4All for Juvenile Law Center &amp; Penn School of Social Policy and Practice
- [![Circle CI](https://circleci.com/gh/hack4impact/flask-base.svg?style=svg)](https://circleci.com/gh/hack4impact/flask-base) [![Stories in Ready](https://badge.waffle.io/hack4impact/flask-base.png?label=ready&title=Ready)](https://waffle.io/hack4impact/flask-base)
+ [![Circle CI](https://circleci.com/gh/hack4impact/maps4all-jlc-sp2.svg?style=svg)](https://circleci.com/gh/hack4impact/maps4all-jlc-sp2) 
 
 ## Team Members
 - Rani Iyer
