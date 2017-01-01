@@ -13,6 +13,7 @@ var allResourceBounds;
 
 // Click listener for a marker.
 function markerListener(marker, event) {
+  $('.list-resource').removeClass('list-selected');
   $('#map').show();
   $('#resource-info').hide();
 
@@ -419,12 +420,12 @@ function populateListDiv() {
   // Can only add handlers to elements in template after compilation
   $(".list-resource").each(function(i, element) {
     element.addEventListener('click', function() {
+      markerListener(markersToShow[i], 'click');
       $('.list-resource').removeClass('list-selected');
 
       if ($(window).width() > singleColBreakpoint) {
         $(this).addClass('list-selected');
       }
-      markerListener(markersToShow[i], 'click');
     });
   });
 }

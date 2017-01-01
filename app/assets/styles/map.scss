@@ -267,6 +267,7 @@ $input-color: rgba(0, 0, 0, 0.4);
   height: 100%;
   overflow: scroll;
   padding: 1.25em;
+  word-wrap: break-word;
 
   // Specificity to override default styles
   > .ui.header > .sub.header > .ui.label {
