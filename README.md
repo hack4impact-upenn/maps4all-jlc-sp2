@@ -1,5 +1,6 @@
 # Maps4All for Juvenile Law Center &amp; Penn School of Social Policy and Practice
  [![Circle CI](https://circleci.com/gh/hack4impact/maps4all-jlc-sp2.svg?style=svg)](https://circleci.com/gh/hack4impact/maps4all-jlc-sp2) 
+[![Code Climate](https://codeclimate.com/github/hack4impact/maps4all-jlc-sp2/badges/gpa.svg)](https://codeclimate.com/github/hack4impact/maps4all-jlc-sp2) [![Test Coverage](https://codeclimate.com/github/hack4impact/maps4all-jlc-sp2/badges/coverage.svg)](https://codeclimate.com/github/hack4impact/maps4all-jlc-sp2/coverage) [![Issue Count](https://codeclimate.com/github/hack4impact/maps4all-jlc-sp2/badges/issue_count.svg)](https://codeclimate.com/github/hack4impact/maps4all-jlc-sp2)
 
 ## Team Members
 - Rani Iyer
