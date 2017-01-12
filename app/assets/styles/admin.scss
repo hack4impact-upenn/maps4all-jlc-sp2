@@ -28,3 +28,13 @@ $transform: translate(-50%,0%);
   -ms-transform: $transform;
   -webkit-transform: $transform;
 }
+
+// CSV Upload
+#upload-progress {
+  display: none;
+}
+
+#progress-msgs .ui.segment {
+  max-height: 175px;
+  overflow-y: scroll;
+}

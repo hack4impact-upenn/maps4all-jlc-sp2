@@ -26,6 +26,17 @@
   -webkit-transform: translate(-50%, 0%);
 }
 
+@media -sass-debug-info{filename{}line{font-family:\0000333}}
+#upload-progress {
+  display: none;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000337}}
+#progress-msgs .ui.segment {
+  max-height: 175px;
+  overflow-y: scroll;
+}
+
 @media -sass-debug-info{filename{}line{font-family:\0000314}}
 body {
   font-family: "Nunito Sans", sans-serif;
