@@ -31,8 +31,8 @@
             {% endfor %}
           </select>
         {% endif %}
-          <div id="advanced-filters-show">
-              <i class="plus icon"></i>
+        {% if options %}
+          <div id="advanced-filters-showhide">
               Show Advanced Filters
           </div>
           <div id="advanced-filters-hide">
@@ -42,14 +42,16 @@
           <div id="advanced-search" class="option-group-advanced">
               {% for o in options.keys() %}
                   <div>{{ o }}</div>
-                  <select multiple="" class="ui fluid dropdown" placeholder="Select">
+                  <select multiple="" class="ui fluid dropdown search-resources-options" placeholder="Select">
                       {% for val in options[o] %}
                               <option value="{{ o }}:{{ val }}">{{ val }}</option>
                       {% endfor %}
                   </select>
               {% endfor %}
           </div>
+        {% endif %}
             <button class="ui fluid button" id="search-user-resources">Search</button>
+            <button class="ui fluid button" id="reset-button">Reset</button>
       </div>
     </div>
 
