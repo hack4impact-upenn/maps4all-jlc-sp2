@@ -35,7 +35,14 @@
     </a>
 {% endmacro %}
 
-{% macro account_items(current_user) %}
+{% macro mobile_info_items(current_user) %}
+    <a href="{{ url_for('main.about') }}" class="item">About</a>
+    <a href="{{ url_for('contact.index') }}" class="item">Contact Us</a>
+    <a href="{{ url_for('main.health') }}" class="item">Health Insurance</a>
+    <a href="{{ url_for('main.rights') }}" class="item">Know Your Rights</a>
+{% endmacro %}
+
+{% macro desktop_info_items(current_user) %}
     <a href="{{ url_for('main.about') }}" class="item">About</a>
     <a href="{{ url_for('contact.index') }}" class="item">Contact Us</a>
     <div class="ui simple dropdown item">
@@ -48,6 +55,9 @@
                                 icon='book icon') }}
         </div>
     </div>
+{% endmacro %}
+
+{% macro account_items(current_user) %}
     {% if current_user.is_authenticated() %}
         <div class="ui simple dropdown item">
             Manage Resources 
@@ -97,6 +107,7 @@
             {% if endpoints %}
                 {{ render_menu_items(endpoints) }}
             {% endif %}
+            {{ mobile_info_items(current_user) }}
             {{ account_items(current_user) }}
         </div>
     </div>
@@ -110,6 +121,7 @@
             <div class="ui container">
                 {{ header_items(current_user) }}
                 <div class="right menu">
+                    {{ desktop_info_items(current_user) }}
                     {{ account_items(current_user) }}
                 </div>
             </div>
