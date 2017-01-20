@@ -1,5 +1,6 @@
 import os
 import urlparse
+import logging
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -60,7 +61,9 @@ class ProductionConfig(Config):
     def init_app(cls, app):
         Config.init_app(app)
 
-        # Email errors to administators
+        app.logger.addHandler(logging.StreamHandler(sys.stdout))
+        app.logger.setLevel(logging.ERROR)
+        # # Email errors to administators
         # import logging
         # from logging.handlers import SMTPHandler
         # credentials = None
