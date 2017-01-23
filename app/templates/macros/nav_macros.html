@@ -40,19 +40,22 @@
     <a href="{{ url_for('contact.index') }}" class="item">Contact Us</a>
     <a href="{{ url_for('main.health') }}" class="item">Health Insurance</a>
     <a href="{{ url_for('main.rights') }}" class="item">Know Your Rights</a>
+    <a href="{{ url_for('main.hotlines') }}" class="item">Hotlines</a>
 {% endmacro %}
 
 {% macro desktop_info_items(current_user) %}
     <a href="{{ url_for('main.about') }}" class="item">About</a>
     <a href="{{ url_for('contact.index') }}" class="item">Contact Us</a>
     <div class="ui simple dropdown item">
-        Information 
+        Information
         <i class="dropdown icon"></i>
         <div class="menu">
             {{ dropdown_choice('Health Insurance', 'main.health',
                                 icon='first aid icon') }}
             {{ dropdown_choice('Know Your Rights', 'main.rights',
                                 icon='book icon') }}
+            {{ dropdown_choice('Hotlines', 'main.hotlines',
+                                icon='call icon') }}
         </div>
     </div>
 {% endmacro %}
@@ -60,7 +63,7 @@
 {% macro account_items(current_user) %}
     {% if current_user.is_authenticated() %}
         <div class="ui simple dropdown item">
-            Manage Resources 
+            Manage Resources
             <i class="dropdown icon"></i>
             <div class="menu">
                 <h3 class="ui header">Resources</h3>

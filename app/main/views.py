@@ -132,6 +132,12 @@ def rights():
     return render_template('main/rights.html',
                            editable_html_obj=editable_html_obj)
 
+@main.route('/hotlines')
+def hotlines():
+   editable_html_obj = EditableHTML.get_editable_html('hotlines')
+   return render_template('main/hotlines.html',
+                          editable_html_obj=editable_html_obj)
+
 @main.route('/update-editor-contents', methods=['POST'])
 @login_required
 def update_editor_contents():
