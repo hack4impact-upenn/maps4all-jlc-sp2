@@ -88,7 +88,8 @@ def upload_row():
                 "status": "Success",
                 "message": "Successfully added fields",
                 })
-        except:
+        except Exception as e:
+            print e
             db.session.rollback()
             abort(404)
     if data['action'] == 'fields-update': # Update operation
@@ -206,7 +207,8 @@ def upload_row():
                 "status": "Success",
                 "message": "Successfully added row"
                 })
-        except:
+        except Exception as e:
+            print e
             db.session.rollback()
             abort(404)
     if data['action'] == 'update': # Update operation
