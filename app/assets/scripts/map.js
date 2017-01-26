@@ -97,6 +97,7 @@ function displayPhoneNumbers(descriptors) {
 function displayDetailedResourceView(marker) {
   // get descriptor information as associations
   $.get('get-associations/' + marker.resourceID).done(function(associations) {
+
     $("#map").hide();
     $('#map-footer').hide();
     $("#resource-info").empty();
@@ -105,11 +106,14 @@ function displayDetailedResourceView(marker) {
     var associationObject = JSON.parse(associations);
     var descriptors = [];
     for (var key in associationObject) {
-      value = associationObject[key];
+      var value = associationObject[key];
 
       // Combine multiple option descriptor values
       if (Array.isArray(associationObject[key])) {
-        value = Object.values(value).join(', ');
+        value = Object.keys(value).map(function(key) {
+          return value[key];
+        });
+        value = value.join(', ');
       }
 
       var descriptor = {
