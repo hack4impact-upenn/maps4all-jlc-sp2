@@ -9,8 +9,15 @@
     {% endfor %}
 {% endmacro %}
 
-{% macro header_items(current_user) %}
-    <a class="header item" href="{{ url_for('main.index') }}">{{ config.APP_NAME }}</a>
+{% macro header_items(current_user, platform) %}
+    <a class="header item" id="nav-logo" href="{{ url_for('main.index') }}">
+      <img src="{{ url_for('static', filename='images/logo.png') }}">
+    </a>
+    {% if platform == 'desktop' %}
+      <a class="header item" href="{{ url_for('main.index') }}">
+        {{ config.APP_NAME }}
+      </a>
+    {% endif %}
     {% if current_user.is_authenticated() %}
         {% set href = url_for(current_user.role.index + '.index') %}
         <a class="item" href="{{ href }}">{{ current_user.role.name }} Dashboard</a>
@@ -115,7 +122,7 @@
 {% macro mobile_nav(current_user, endpoints=None) %}
     <div class="mobile only row">
         <div class="ui fixed inverted black main menu">
-            {{ header_items(current_user) }}
+            {{ header_items(current_user, 'mobile') }}
             <div class="right menu">
                 <a class="icon item" id="open-nav"><i class="sidebar icon"></i></a>
             </div>
@@ -138,7 +145,7 @@
     <div class="computer tablet only row">
         <div class="ui fixed inverted black main menu">
             <div class="ui container">
-                {{ header_items(current_user) }}
+                {{ header_items(current_user, 'desktop') }}
                 <div class="right menu">
                     {{ desktop_info_items(current_user) }}
                     {{ account_items(current_user) }}

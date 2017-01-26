@@ -10,6 +10,7 @@ $input-color: rgba(0, 0, 0, 0.4);
 
 /******** GENERAL MAP/LIST GRID STYLES *************/
 #map-list-grid {
+  margin-top: -6px;
   padding: 1em;
   position: absolute;
   width: 100%;
@@ -144,13 +145,18 @@ $input-color: rgba(0, 0, 0, 0.4);
 }
 
 // Resource list item
-#list > .item.list-resource {
+.item.list-resource {
   cursor: pointer;
   margin: 0.5em;
   padding-bottom: 0.5em;
   padding-top: 0.5em;
 
-  .sub.header {
+  .ui.grid {
+    margin-bottom:-0.5em;
+    margin-top: -0.5em;
+  }
+
+  #list-resource-details {
     float: left;
     font-family: $font-choice;
     font-weight: normal;
@@ -170,15 +176,9 @@ $input-color: rgba(0, 0, 0, 0.4);
     font-weight: normal;
     margin-left: 0;
     margin-top: 0.5em;
-    padding-top: 0.4em;
-  }
-
-  #resource-list-chevron {
-    float: right;
-    margin-top: 1.5em;
-    position: absolute;
-    right: 1em;
-    vertical-align: middle;
+    padding-top: 0.5em;
+    white-space: normal;
+    word-wrap: break-word;
   }
 
   .header {
@@ -198,8 +198,11 @@ $input-color: rgba(0, 0, 0, 0.4);
   }
 }
 
+#resource-list-chevron {
+  padding-left: 0;
+}
+
 #category, #avg_rating {
-  height: 2em;
   display: inline-block;
   vertical-align: middle;
 }
@@ -310,7 +313,7 @@ $input-color: rgba(0, 0, 0, 0.4);
     margin-bottom: 2px;
   }
 
-  #phone-number{
+  #phone-number {
     margin-bottom: 4px;
     margin-top: 2px;
   }
@@ -374,6 +377,7 @@ $input-color: rgba(0, 0, 0, 0.4);
 #user-rating {
   background-color: #F8F8F8;
   box-shadow: none;
+  margin-top: 1em;
 }
 
 #avg_rating {
