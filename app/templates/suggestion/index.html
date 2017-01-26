@@ -20,7 +20,7 @@
       <tbody>
         {% for suggestion in suggestions %}
           <tr>
-            <td>{{ suggestion.submission_time }}</td>
+            <td>{{ suggestion.submission_time.strftime('%m-%d-%Y') }}</td>
             <td>{{ suggestion.resource_name }}</td>
             <td>{{ suggestion.resource_address }}</td>
             <td>{{ suggestion.suggestion_text }}</td>
