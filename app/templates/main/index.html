@@ -179,25 +179,31 @@
 <script id="listview-template" type="text/x-handlebars-template">
   {% raw %}{{#each resource}}{% endraw %}
   <div class="item list-resource">
-    <h3 class="ui header">
-      <a>{% raw %}{{ name }}{% endraw %}</a>
-    </h3>
-    <div class="sub header">
-      <div>{% raw %}{{ address }}{% endraw %}</div>
-      {% raw %}{{#if avg_rating}}{% endraw %}
-        <a class="ui small label" id="avg_rating">
-          <i class="yellow star icon"></i>
-          {% raw %}{{ avg_rating }}{% endraw %}
-        </a>
-      {% raw %}{{/if}}{% endraw %}
-      {% raw %}{{#each requiredOpts}}{% endraw %}
-          <div class="ui small label" id="category">
-            {% raw %}{{ this }}{% endraw %}
+    <div class="ui grid">
+      <div class="ui fourteen wide column">
+        <h3 class="ui left aligned header">
+          <a>{% raw %}{{ name }}{% endraw %}</a>
+        </h3>
+        <div class="list-resource-details">
+          <div>{% raw %}{{ address }}{% endraw %}</div>
+          <div>
+          {% raw %}{{#if avg_rating}}{% endraw %}
+            <a class="ui small label" id="avg_rating">
+              <i class="yellow star icon"></i>
+              {% raw %}{{ avg_rating }}{% endraw %}
+            </a>
+          {% raw %}{{/if}}{% endraw %}
+          {% raw %}{{#each requiredOpts}}{% endraw %}
+              <div class="ui small label" id="category">
+                {% raw %}{{ this }}{% endraw %}
+              </div>
+          {% raw %}{{/each}}{% endraw %}
           </div>
-      {% raw %}{{/each}}{% endraw %}
-    </div>
-    <div class="right floated content" id="resource-list-chevron">
-      <a><i class="large right chevron icon"></i></a>
+        </div>
+      </div>
+      <div class="two wide column" id="resource-list-chevron">
+        <a><i class="large right chevron icon"></i></a>
+      </div>
     </div>
   </div>
   {% raw %}{{/each}}{% endraw %}

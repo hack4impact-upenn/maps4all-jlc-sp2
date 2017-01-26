@@ -464,7 +464,7 @@ function resizeMapListGrid() {
   if ($(window).width() <= singleColNoSpaceBreakpoint) {
     $('#map-list-grid').height($('body').height() - navHeight - 15);
   } else {
-    $('#map-list-grid').height($('body').height() - navHeight - 40);
+    $('#map-list-grid').height($('body').height() - navHeight - 45);
   }
 
   // If we resize from single col to double col, we remove the map footer
