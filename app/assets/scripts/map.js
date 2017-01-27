@@ -192,6 +192,7 @@ function displayDetailedResourceView(marker) {
         center: marker.getPosition(),
         zoom: focusZoom,
         scrollwheel: false,
+        draggable: false,
       }
     );
     var singleMarker = new google.maps.Marker({
