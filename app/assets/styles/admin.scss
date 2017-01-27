@@ -38,3 +38,22 @@ $transform: translate(-50%,0%);
   max-height: 175px;
   overflow-y: scroll;
 }
+
+// Admin pages
+.ui.stackable.grid.container {
+  .ui.header:first-child {
+    margin-top: 0.7em;
+  }
+}
+
+.ui.text.container {
+  .ui.dividing.header, .ui.centered.header {
+    margin-top: 2.5em;
+  }
+}
+
+#suggest-resource {
+  .ui.dividing.header, .ui.centered.header {
+    margin-top: 0.5em;
+  }
+}

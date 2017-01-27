@@ -30,8 +30,8 @@ function markerListener(marker, event) {
     // TODO: Remove 15 hack
     // Split view vertically between map and a map footer for info
     var totalHeight = $('#right-column').height() - 15;
-    $('#map-footer').height(totalHeight / 5);
-    $('#map').height(4 * totalHeight / 5);
+    $('#map-footer').height(totalHeight / 4);
+    $('#map').height(3 * totalHeight / 4);
     resizeMapListGrid();
 
     // Need to set center and zoom since default is not at right location

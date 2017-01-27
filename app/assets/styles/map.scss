@@ -10,7 +10,7 @@ $input-color: rgba(0, 0, 0, 0.4);
 
 /******** GENERAL MAP/LIST GRID STYLES *************/
 #map-list-grid {
-  margin-top: -6px;
+  margin-top: -4px;
   padding: 1em;
   position: absolute;
   width: 100%;
@@ -65,16 +65,20 @@ $input-color: rgba(0, 0, 0, 0.4);
 #search-user-resources {
   background-color: $accent-color;
   color: #fff;
+  display: block;
   font-family: $font-choice;
   font-weight: 400;
+  text-align: center;
 }
 
 #reset-button {
   background-color: #CCCCCC;
   color: #fff;
+  display: block;
   font-family: $font-choice;
   font-weight: 400;
   margin-top: 0.5em;
+  text-align: center;
 }
 
 // Resource name search
