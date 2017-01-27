@@ -290,6 +290,7 @@ $input-color: rgba(0, 0, 0, 0.4);
   height: 100%;
   overflow: scroll;
   padding: 1.25em;
+  position: absolute;
   word-wrap: break-word;
 
   // Specificity to override default styles
