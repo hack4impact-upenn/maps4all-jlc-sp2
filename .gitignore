@@ -14,3 +14,4 @@ dist
 migrations/
 .env
 dump.rdb
+.env.swp
