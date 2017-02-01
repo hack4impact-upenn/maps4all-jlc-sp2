@@ -30,8 +30,8 @@ function markerListener(marker, event) {
     // TODO: Remove 15 hack
     // Split view vertically between map and a map footer for info
     var totalHeight = $('#right-column').height() - 15;
-    $('#map-footer').height(totalHeight / 5);
-    $('#map').height(4 * totalHeight / 5);
+    $('#map-footer').height(totalHeight / 4);
+    $('#map').height(3 * totalHeight / 4);
     resizeMapListGrid();
 
     // Need to set center and zoom since default is not at right location
@@ -97,6 +97,7 @@ function displayPhoneNumbers(descriptors) {
 function displayDetailedResourceView(marker) {
   // get descriptor information as associations
   $.get('get-associations/' + marker.resourceID).done(function(associations) {
+
     $("#map").hide();
     $('#map-footer').hide();
     $("#resource-info").empty();
@@ -105,11 +106,14 @@ function displayDetailedResourceView(marker) {
     var associationObject = JSON.parse(associations);
     var descriptors = [];
     for (var key in associationObject) {
-      value = associationObject[key];
+      var value = associationObject[key];
 
       // Combine multiple option descriptor values
       if (Array.isArray(associationObject[key])) {
-        value = Object.values(value).join(', ');
+        value = Object.keys(value).map(function(key) {
+          return value[key];
+        });
+        value = value.join(', ');
       }
 
       var descriptor = {
@@ -188,6 +192,7 @@ function displayDetailedResourceView(marker) {
         center: marker.getPosition(),
         zoom: focusZoom,
         scrollwheel: false,
+        draggable: false,
       }
     );
     var singleMarker = new google.maps.Marker({
