@@ -247,6 +247,15 @@ $input-color: rgba(0, 0, 0, 0.4);
   }
 }
 
+// Target Safari marker info window: remove scrolling
+#map div.gm-style-iw {
+    overflow: visible !important;
+
+    > div, > div > div {
+      overflow: visible !important;
+    }
+}
+
 #avg_rating-marker {
   background-color: inherit;
   border: 1px solid $secondary-color-light;
@@ -331,6 +340,10 @@ $input-color: rgba(0, 0, 0, 0.4);
     margin-top: 2px;
   }
 
+  #twilio-input {
+    width: 100%;
+  }
+
   .disclaimer-sms {
     font-size: 10;
     margin-bottom: 2px;
@@ -339,6 +352,7 @@ $input-color: rgba(0, 0, 0, 0.4);
 
   .sub.header {
     font-size: $font-size;
+    margin-bottom: 0.5em;
   }
 
   #text-save-submit {
