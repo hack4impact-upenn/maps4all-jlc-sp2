@@ -400,7 +400,7 @@ function initResetButton() {
     // clear location
     locationMarker.setMap(null);
     locationMarker = null;
-    $('#pac-input').val('')
+    $('#pac-input').val('');
 
     // show all resources again
     resourceSearchRequest('/get-resources');

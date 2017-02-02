@@ -235,17 +235,16 @@ h1.ui.header, h2.ui.header {
 ::-webkit-scrollbar {
   -webkit-appearance: none;
   width: 10px;
-  min-height: 100px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003200}}
+@media -sass-debug-info{filename{}line{font-family:\00003199}}
 ::-webkit-scrollbar-thumb {
   border-radius: 4px;
   background-color: rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003207}}
+@media -sass-debug-info{filename{}line{font-family:\00003206}}
 #h4i-full-logo img {
   width: 8em;
 }
