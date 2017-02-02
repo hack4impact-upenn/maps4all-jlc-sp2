@@ -41,13 +41,17 @@
 .ui.stackable.grid.container .ui.header:first-child {
   margin-top: 0.7em;
 }
+@media -sass-debug-info{filename{}line{font-family:\0000349}}
+.ui.stackable.grid.container .ui.padded.segment .ui.header:first-child {
+  margin-top: 0;
+}
 
-@media -sass-debug-info{filename{}line{font-family:\0000350}}
+@media -sass-debug-info{filename{}line{font-family:\0000356}}
 .ui.text.container .ui.dividing.header, .ui.text.container .ui.centered.header {
   margin-top: 2.5em;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000356}}
+@media -sass-debug-info{filename{}line{font-family:\0000362}}
 #suggest-resource .ui.dividing.header, #suggest-resource .ui.centered.header {
   margin-top: 0.5em;
 }
@@ -225,17 +229,18 @@ h1.ui.header, h2.ui.header {
 @media -sass-debug-info{filename{}line{font-family:\00003190}}
 ::-webkit-scrollbar {
   -webkit-appearance: none;
-  width: 7px;
+  width: 10px;
+  min-height: 100px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003194}}
+@media -sass-debug-info{filename{}line{font-family:\00003195}}
 ::-webkit-scrollbar-thumb {
   border-radius: 4px;
   background-color: rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003201}}
+@media -sass-debug-info{filename{}line{font-family:\00003202}}
 #h4i-full-logo img {
   width: 8em;
 }
