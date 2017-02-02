@@ -200,7 +200,7 @@ $input-color: rgba(0, 0, 0, 0.4);
       color: $secondary-color;
     }
 
-    #avg_rating.ui.label {
+    #avg_rating.ui.label, #category.ui.label {
       color: $secondary-color-light;
       border: 1px solid $secondary-color-light;
     }
@@ -236,7 +236,7 @@ $input-color: rgba(0, 0, 0, 0.4);
     background-color: $secondary-color;
     color: white;
     cursor: pointer;
-    font-weight: 300;
+    font-weight: 600;
     position: relative;
     right: 8px;
     text-decoration: none;
