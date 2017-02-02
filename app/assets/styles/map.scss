@@ -313,11 +313,13 @@ $input-color: rgba(0, 0, 0, 0.4);
 
   .successMessage {
     display: none;
+    color: 1px solid $secondary-color;
   }
 
   .textSentSuccess{
     display: none;
     margin-top: 3px;
+    color: 1px solid $secondary-color;
   }
 
   #sms-header {

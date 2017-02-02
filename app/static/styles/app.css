@@ -148,7 +148,7 @@ nav .mobile.only.row .ui.vertical.menu {
 
 @media -sass-debug-info{filename{}line{font-family:\00003112}}
 .flashes > .row > .ui.message {
-  background-color: #FF937C;
+  background-color: #DC214C;
   box-shadow: none;
   color: #fff;
   font-family: "Nunito Sans", sans-serif;
@@ -205,9 +205,9 @@ h1.ui.header, h2.ui.header {
 @media -sass-debug-info{filename{}line{font-family:\00003168}}
 .ui.positive.message {
   background-color: transparent;
-  border: 1px solid #FF937C;
+  border: 1px solid #DC214C;
   box-shadow: none;
-  color: #FF937C;
+  color: #DC214C;
 }
 @media -sass-debug-info{filename{}line{font-family:\00003174}}
 .ui.positive.message > .close.icon {
@@ -537,37 +537,39 @@ h1.ui.header, h2.ui.header {
 @media -sass-debug-info{filename{}line{font-family:\00003314}}
 #resource-info .successMessage {
   display: none;
+  color: 1px solid #DC214C;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003318}}
+@media -sass-debug-info{filename{}line{font-family:\00003319}}
 #resource-info .textSentSuccess {
   display: none;
   margin-top: 3px;
+  color: 1px solid #DC214C;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003323}}
+@media -sass-debug-info{filename{}line{font-family:\00003325}}
 #resource-info #sms-header {
   margin-bottom: 2px;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003327}}
+@media -sass-debug-info{filename{}line{font-family:\00003329}}
 #resource-info #phone-number {
   margin-bottom: 4px;
   margin-top: 2px;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003332}}
+@media -sass-debug-info{filename{}line{font-family:\00003334}}
 #resource-info .disclaimer-sms {
   font-size: 10;
   margin-bottom: 2px;
   margin-top: 2px;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003338}}
+@media -sass-debug-info{filename{}line{font-family:\00003340}}
 #resource-info .sub.header {
   font-size: 14px;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003342}}
+@media -sass-debug-info{filename{}line{font-family:\00003344}}
 #resource-info #text-save-submit {
   margin-bottom: 2px;
   margin-top: 3px;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003347}}
+@media -sass-debug-info{filename{}line{font-family:\00003349}}
 #resource-info .ui.label {
   background-color: inherit;
   border: 1px solid #2DBDC2;
@@ -578,17 +580,17 @@ h1.ui.header, h2.ui.header {
   margin-bottom: 1em;
   padding-top: 0.4em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003358}}
+@media -sass-debug-info{filename{}line{font-family:\00003360}}
 #resource-info .ui.header {
   color: #2C9FA3;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003363}}
+@media -sass-debug-info{filename{}line{font-family:\00003365}}
 #descriptor-name {
   font-family: "Nunito Sans", sans-serif;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003367}}
+@media -sass-debug-info{filename{}line{font-family:\00003369}}
 #back-button {
   color: #2C9FA3;
   display: inline-block;
@@ -597,42 +599,42 @@ h1.ui.header, h2.ui.header {
   z-index: 2;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003375}}
+@media -sass-debug-info{filename{}line{font-family:\00003377}}
 #back-button:hover {
   color: #2DBDC2;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003379}}
+@media -sass-debug-info{filename{}line{font-family:\00003381}}
 #single-resource-map {
   height: 400px;
   width: 100%;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003384}}
+@media -sass-debug-info{filename{}line{font-family:\00003386}}
 #user-rating, .successMessage {
   margin-bottom: 1em;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003388}}
+@media -sass-debug-info{filename{}line{font-family:\00003390}}
 #user-rating {
   background-color: #F8F8F8;
   box-shadow: none;
   margin-top: 1em;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003394}}
+@media -sass-debug-info{filename{}line{font-family:\00003396}}
 #avg_rating {
   color: #2C9FA3;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003398}}
+@media -sass-debug-info{filename{}line{font-family:\00003400}}
 #submit-rating {
   background-color: #2C9FA3;
   color: #fff;
   font-weight: 400;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003404}}
+@media -sass-debug-info{filename{}line{font-family:\00003406}}
 #submit-rating:hover {
   background-color: #2DBDC2;
 }
