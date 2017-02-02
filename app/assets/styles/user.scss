@@ -16,6 +16,10 @@ $transform: translate(-50%,0%);
   transform: $transform;
   -ms-transform: $transform;
   -webkit-transform: $transform;
+
+  .ui.text.container {
+    margin-bottom: 1em;
+  }
 }
 
 .static-page {
