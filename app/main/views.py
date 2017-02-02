@@ -1,16 +1,16 @@
 import json
-
-from flask import render_template, request,jsonify
+import os
+from twilio.rest.lookups import TwilioLookupsClient
+from twilio.rest import TwilioRestClient 
 from flask import render_template, url_for, request, jsonify
 from flask.ext.login import login_required
-
+from twilio import twiml
 from app import csrf
 from .. import db
 from ..models import EditableHTML, Resource, Rating, Descriptor, OptionAssociation, RequiredOptionDescriptor
 from . import main
 from wtforms.fields import SelectMultipleField, TextAreaField
 from ..single_resource.forms import SingleResourceForm
-
 from datetime import datetime
 
 @main.route('/')
@@ -111,7 +111,16 @@ def get_associations(resource_id):
     for td in resource.text_descriptors:
         associations[td.descriptor.name] = td.text
     for od in resource.option_descriptors:
-        associations[od.descriptor.name] = od.descriptor.values[od.option]
+        val = od.descriptor.values[od.option]
+        values = set()
+        # multiple option association values
+        if associations.get(od.descriptor.name):
+            curr = associations.get(od.descriptor.name)
+            curr.append(val)
+            values = set(curr)
+        else:
+            values.add(val)
+        associations[od.descriptor.name] = list(values)
     return json.dumps(associations)
 
 @main.route('/about')
@@ -132,6 +141,12 @@ def rights():
     return render_template('main/rights.html',
                            editable_html_obj=editable_html_obj)
 
+@main.route('/hotlines')
+def hotlines():
+   editable_html_obj = EditableHTML.get_editable_html('hotlines')
+   return render_template('main/hotlines.html',
+                          editable_html_obj=editable_html_obj)
+
 @main.route('/update-editor-contents', methods=['POST'])
 @login_required
 def update_editor_contents():
@@ -146,6 +161,31 @@ def update_editor_contents():
     db.session.add(editor_contents)
     db.session.commit()
     return 'OK', 200
+
+@csrf.exempt
+@main.route('/send-sms', methods=['POST'])
+def send_sms():
+    sid = os.environ.get('TWILIO_ACCOUNT_SID')
+    auth = os.environ.get('TWILIO_AUTH_TOKEN')
+    client = TwilioLookupsClient(account=sid, token=auth)
+    send_client = TwilioRestClient(account=sid, token=auth) 
+    if request is not None:
+        phone_num= request.json['number']
+        resourceID = request.json['id']
+        curr_res = Resource.query.get(resourceID)
+        name = "Name: " + curr_res.name
+        address = "Address: " + curr_res.address
+        message = name +"\n" + address
+        try:
+            number = client.phone_numbers.get(phone_num, include_carrier_info=False)
+            num = number.phone_number
+            send_client.messages.create(
+                to=num,
+                from_="+17657692023", 
+                body=message)
+            return jsonify(status='success')
+        except:
+            return jsonify(status='error')
 
 @csrf.exempt
 @main.route('/rating-post', methods =['POST'])

@@ -30,8 +30,8 @@ function markerListener(marker, event) {
     // TODO: Remove 15 hack
     // Split view vertically between map and a map footer for info
     var totalHeight = $('#right-column').height() - 15;
-    $('#map-footer').height(totalHeight / 5);
-    $('#map').height(4 * totalHeight / 5);
+    $('#map-footer').height(totalHeight / 4);
+    $('#map').height(3 * totalHeight / 4);
     resizeMapListGrid();
 
     // Need to set center and zoom since default is not at right location
@@ -80,11 +80,15 @@ function markerListener(marker, event) {
 function displayPhoneNumbers(descriptors) {
   var PHONE_NUMBER_LENGTH = 12;
   for (desc of descriptors) {
-    var updated = desc.value.replace(/(\d\d\d-\d\d\d-\d\d\d\d)/g,
-      function replacePhoneNum(num) {
-        return "<a href=\"tel:+1-" + num +  "\">" + num + "</a>";
-    });
-    $('#descriptor-value-'+desc.key).html(updated);
+    // skip option descriptors
+    if (desc.value.replace!=null) {
+      var updated = desc.value.replace(/(\d\d\d-\d\d\d-\d\d\d\d)/g,
+        function replacePhoneNum(num) {
+          return "<a href=\"tel:+1-" + num + "\">" + num + "</a>";
+        }
+      );
+      $('#descriptor-value-'+desc.key).html(updated);
+    }
   }
 }
 
@@ -93,6 +97,7 @@ function displayPhoneNumbers(descriptors) {
 function displayDetailedResourceView(marker) {
   // get descriptor information as associations
   $.get('get-associations/' + marker.resourceID).done(function(associations) {
+
     $("#map").hide();
     $('#map-footer').hide();
     $("#resource-info").empty();
@@ -101,9 +106,19 @@ function displayDetailedResourceView(marker) {
     var associationObject = JSON.parse(associations);
     var descriptors = [];
     for (var key in associationObject) {
+      var value = associationObject[key];
+
+      // Combine multiple option descriptor values
+      if (Array.isArray(associationObject[key])) {
+        value = Object.keys(value).map(function(key) {
+          return value[key];
+        });
+        value = value.join(', ');
+      }
+
       var descriptor = {
         key: key,
-        value: associationObject[key],
+        value: value
       };
       descriptors.push(descriptor);
     }
@@ -156,6 +171,20 @@ function displayDetailedResourceView(marker) {
       submitReview(rating,review,id);
     });
 
+    // Button to "send" a text to the number using twilio
+    $('#text-save-submit').click(function(e){
+      var number = $('#phone-number').val();
+      var id = marker.resourceID;
+      sendText(number,id);
+    });
+
+    $('#sms-success-close')
+      .on('click', function() {
+        $(this)
+          .closest('.message')
+          .transition('fade');
+      });
+
     // Map for single resource on detailed resource info page
     var singleResourceMap = new google.maps.Map(
       document.getElementById('single-resource-map'),
@@ -163,6 +192,7 @@ function displayDetailedResourceView(marker) {
         center: marker.getPosition(),
         zoom: focusZoom,
         scrollwheel: false,
+        draggable: false,
       }
     );
     var singleMarker = new google.maps.Marker({
@@ -189,6 +219,29 @@ function submitReview(rating, review, id){
   $(".successMessage").show();
 }
 
+function sendText(number,id) {
+  var twilioText = {
+    'number': number,
+    'id': id
+  };
+  $.ajax({
+    url:'/send-sms',
+    data: JSON.stringify(twilioText),
+    contentType: 'application/json',
+    dataType:'json',
+    method: 'POST',
+    success: function(data) {
+      if(data.status=='success') {
+        $(".textSentSuccess").show();
+      }
+      else {
+        alert('Invalid phone number');
+        $("#phone-number").val('');
+      }
+    }
+  });
+}
+
 /*
  * Initializes the map, the corresponding list of resources and search
  * functionality on the resources
@@ -211,13 +264,11 @@ function initMap() {
   infowindow = new google.maps.InfoWindow();
   initLocationSearch(map);
   initResourceSearch();
+  initResetButton();
 
   $.get('/get-resources').done(function(resourcesString) {
     var resources = JSON.parse(resourcesString);
     populateMarkers(resources);
-  });
-
-  google.maps.event.addListenerOnce(map, 'idle', function() {
     populateListDiv();
   });
 }
@@ -301,7 +352,7 @@ function initLocationSearch(map) {
  * Initialize searching on the map by resource name input
  */
 function initResourceSearch() {
-  // Click 'Search' on resource name input
+  // Click 'Search' on search box
   $('#search-user-resources').click(function() {
     var query = '?' + 'name=' + $('#resources-input').val();
     var requiredOptions = [];
@@ -328,6 +379,22 @@ function initResourceSearch() {
     if ($(this).val().length === 0) {
       resourceSearchRequest('/get-resources');
     }
+  });
+}
+
+/*
+ * Initialize resetting search input and filters
+ */
+function initResetButton() {
+  // Click 'Reset' on search box
+  $('#reset-button').click(function() {
+    // clear search input and option filters
+    $('#resources-input').val('');
+    $('#search-resources-req-options').dropdown('clear');
+    $('.search-resources-options').dropdown('clear');
+
+    // show all resources again
+    resourceSearchRequest('/get-resources');
   });
 }
 
@@ -439,7 +506,7 @@ function resizeMapListGrid() {
   if ($(window).width() <= singleColNoSpaceBreakpoint) {
     $('#map-list-grid').height($('body').height() - navHeight - 15);
   } else {
-    $('#map-list-grid').height($('body').height() - navHeight - 40);
+    $('#map-list-grid').height($('body').height() - navHeight - 45);
   }
 
   // If we resize from single col to double col, we remove the map footer

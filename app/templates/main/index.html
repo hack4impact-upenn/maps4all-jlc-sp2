@@ -31,6 +31,7 @@
             {% endfor %}
           </select>
         {% endif %}
+        {% if options %}
           <div id="advanced-filters-show">
               <i class="plus icon"></i>
               Show Advanced Filters
@@ -42,14 +43,16 @@
           <div id="advanced-search" class="option-group-advanced">
               {% for o in options.keys() %}
                   <div>{{ o }}</div>
-                  <select multiple="" class="ui fluid dropdown" placeholder="Select">
+                  <select multiple="" class="ui fluid dropdown search-resources-options" placeholder="Select">
                       {% for val in options[o] %}
                               <option value="{{ o }}:{{ val }}">{{ val }}</option>
                       {% endfor %}
                   </select>
               {% endfor %}
           </div>
+        {% endif %}
             <button class="ui fluid button" id="search-user-resources">Search</button>
+            <button class="ui fluid button" id="reset-button">Reset</button>
       </div>
     </div>
 
@@ -145,6 +148,22 @@
   <div class="ui hidden divider"></div>
   <div class="actions">
     <h2 class="ui dividing header">Actions</h2>
+    <div class="text-save">
+        <div class="ui form">
+          <h3 class="ui header" id="sms-header">Save this resource through SMS</h3>
+          <p class="disclaimer-sms">Standard messaging rates apply</p>
+          <div class="ui input">
+            <input type="text" id="phone-number" placeholder="Type your mobile number in the form: 1234567890">
+          </div>
+          <button class="ui button" id="text-save-submit">Text me</button>
+        </div>
+    </div>
+    <div class="textSentSuccess">
+      <div class="ui positive message">
+        <i class="close icon" id="sms-success-close"></i>
+        Your text was sent!
+      </div>
+    </div>
     <div class="userRating">
       <div class="ui segment" id="user-rating">
         <div class="ui form">
@@ -176,25 +195,31 @@
 <script id="listview-template" type="text/x-handlebars-template">
   {% raw %}{{#each resource}}{% endraw %}
   <div class="item list-resource">
-    <h3 class="ui header">
-      <a>{% raw %}{{ name }}{% endraw %}</a>
-    </h3>
-    <div class="sub header">
-      <div>{% raw %}{{ address }}{% endraw %}</div>
-      {% raw %}{{#if avg_rating}}{% endraw %}
-        <a class="ui small label" id="avg_rating">
-          <i class="yellow star icon"></i>
-          {% raw %}{{ avg_rating }}{% endraw %}
-        </a>
-      {% raw %}{{/if}}{% endraw %}
-      {% raw %}{{#each requiredOpts}}{% endraw %}
-          <div class="ui small label" id="category">
-            {% raw %}{{ this }}{% endraw %}
+    <div class="ui grid">
+      <div class="ui fourteen wide column">
+        <h3 class="ui left aligned header">
+          <a>{% raw %}{{ name }}{% endraw %}</a>
+        </h3>
+        <div class="list-resource-details">
+          <div>{% raw %}{{ address }}{% endraw %}</div>
+          <div>
+          {% raw %}{{#if avg_rating}}{% endraw %}
+            <a class="ui small label" id="avg_rating">
+              <i class="yellow star icon"></i>
+              {% raw %}{{ avg_rating }}{% endraw %}
+            </a>
+          {% raw %}{{/if}}{% endraw %}
+          {% raw %}{{#each requiredOpts}}{% endraw %}
+              <div class="ui small label" id="category">
+                {% raw %}{{ this }}{% endraw %}
+              </div>
+          {% raw %}{{/each}}{% endraw %}
           </div>
-      {% raw %}{{/each}}{% endraw %}
-    </div>
-    <div class="right floated content" id="resource-list-chevron">
-      <a><i class="large right chevron icon"></i></a>
+        </div>
+      </div>
+      <div class="two wide column" id="resource-list-chevron">
+        <a><i class="large right chevron icon"></i></a>
+      </div>
     </div>
   </div>
   {% raw %}{{/each}}{% endraw %}

@@ -7,6 +7,8 @@ $accent-color: #2C9FA3;
 $accent-color-light: #2DBDC2;
 $accent-color-grey: #EEEEEE;
 $accent-color-dark-grey: #555;
+$secondary-color: #FF937C;
+$secondary-color-light: #FFA491;
 $subheader-color: #AAAAAA;
 $font-choice: 'Nunito Sans', sans-serif;
 
@@ -48,18 +50,45 @@ body {
   font-family: $font-choice;
 }
 
+// Single Column static pages
+@media only screen and (max-width: 800px) {
+  div.form-page, div.static-page {
+    width: 90%;
+  }
+}
+
 // General nav
 nav {
   margin-bottom: 40px !important;
 }
 
 .ui.fixed.main.menu {
-  background-color: #2C9FA3;
+  background-color: $accent-color;
   font-family: $font-choice;
+
+  // Logo
+  .ui.container #nav-logo, #nav-logo {
+    background-color: #FFFFFF;
+    padding: 0;
+
+    img {
+      height: 100%;
+      margin-bottom: 0;
+      margin-top: 0;
+      width: 5.5em;
+    }
+  }
+}
+
+// Logo border
+// specificity to override
+.ui.menu:not(.secondary):not(.text):not(.tabular):not(.borderless)>.container>.item:not(.right):not(.borderless):first-child {
+  border-left-color: $accent-color;
 }
 
 .ui.menu .item.nav-mobile-switch {
   display: none;
+  padding-top: 1.4em;
 
   p {
     display: inline-block;
@@ -81,12 +110,15 @@ nav .mobile.only.row {
 
 // Flashes
 .flashes > .row > .ui.message {
-  background-color: $accent-color-dark-grey;
+  background-color: $secondary-color;
   box-shadow: none;
   color: #fff;
   font-family: $font-choice;
+  left: 0;
+  margin: auto;
   overflow: visible;
   position: absolute;
+  right: 0;
   text-align: center;
   width: 60%;
   z-index: 1000;
@@ -130,4 +162,16 @@ form, table {
 
 h1.ui.header, h2.ui.header {
   color: $accent-color;
+}
+
+// Message
+.ui.positive.message {
+  background-color: transparent;
+  border: 1px solid $secondary-color;
+  box-shadow: none;
+  color: $secondary-color;
+
+  > .close.icon {
+    top: 1em;
+  }
 }

@@ -28,3 +28,32 @@ $transform: translate(-50%,0%);
   -ms-transform: $transform;
   -webkit-transform: $transform;
 }
+
+// CSV Upload
+#upload-progress {
+  display: none;
+}
+
+#progress-msgs .ui.segment {
+  max-height: 175px;
+  overflow-y: scroll;
+}
+
+// Admin pages
+.ui.stackable.grid.container {
+  .ui.header:first-child {
+    margin-top: 0.7em;
+  }
+}
+
+.ui.text.container {
+  .ui.dividing.header, .ui.centered.header {
+    margin-top: 2.5em;
+  }
+}
+
+#suggest-resource {
+  .ui.dividing.header, .ui.centered.header {
+    margin-top: 0.5em;
+  }
+}

@@ -9,8 +9,15 @@
     {% endfor %}
 {% endmacro %}
 
-{% macro header_items(current_user) %}
-    <a class="header item" href="{{ url_for('main.index') }}">{{ config.APP_NAME }}</a>
+{% macro header_items(current_user, platform) %}
+    <a class="header item" id="nav-logo" href="{{ url_for('main.index') }}">
+      <img src="{{ url_for('static', filename='images/logo.png') }}">
+    </a>
+    {% if platform == 'desktop' %}
+      <a class="header item" href="{{ url_for('main.index') }}">
+        {{ config.APP_NAME }}
+      </a>
+    {% endif %}
     {% if current_user.is_authenticated() %}
         {% set href = url_for(current_user.role.index + '.index') %}
         <a class="item" href="{{ href }}">{{ current_user.role.name }} Dashboard</a>
@@ -35,22 +42,35 @@
     </a>
 {% endmacro %}
 
-{% macro account_items(current_user) %}
+{% macro mobile_info_items(current_user) %}
+    <a href="{{ url_for('main.about') }}" class="item">About</a>
+    <a href="{{ url_for('contact.index') }}" class="item">Contact Us</a>
+    <a href="{{ url_for('main.health') }}" class="item">Health Insurance</a>
+    <a href="{{ url_for('main.rights') }}" class="item">Know Your Rights</a>
+    <a href="{{ url_for('main.hotlines') }}" class="item">Hotlines</a>
+{% endmacro %}
+
+{% macro desktop_info_items(current_user) %}
     <a href="{{ url_for('main.about') }}" class="item">About</a>
     <a href="{{ url_for('contact.index') }}" class="item">Contact Us</a>
     <div class="ui simple dropdown item">
-        Information 
+        Information
         <i class="dropdown icon"></i>
         <div class="menu">
             {{ dropdown_choice('Health Insurance', 'main.health',
                                 icon='first aid icon') }}
             {{ dropdown_choice('Know Your Rights', 'main.rights',
                                 icon='book icon') }}
+            {{ dropdown_choice('Hotlines', 'main.hotlines',
+                                icon='call icon') }}
         </div>
     </div>
+{% endmacro %}
+
+{% macro account_items(current_user) %}
     {% if current_user.is_authenticated() %}
         <div class="ui simple dropdown item">
-            Manage Resources 
+            Manage Resources
             <i class="dropdown icon"></i>
             <div class="menu">
                 <h3 class="ui header">Resources</h3>
@@ -60,6 +80,8 @@
                                     icon='add circle icon') }}
                 {{ dropdown_choice('Suggested Resources', 'suggestion.index',
                                     icon='checkmark box icon', id='suggested-resources') }}
+                {{ dropdown_choice('View Ratings/Reviews', 'admin.ratings_table',
+                                    icon='star icon') }}
                 <div class="ui section divider"></div>
                 <h3 class="ui header">Descriptors</h3>
                 {{ dropdown_choice('All Descriptors', 'descriptor.index',
@@ -81,12 +103,26 @@
         <a href="{{ url_for('suggestion.suggest') }}" class="item">Suggest Resource</a>
         <a href="{{ url_for('account.login') }}" class="item">Log in</a>
     {% endif %}
+
+    {% if current_user.is_authenticated() %}
+      <script>
+        // Generates the icon for unread suggested resources
+        $.get('/suggestion/unread', function (data) {
+            var numUnread = data;
+            if (parseInt(numUnread) > 0) {
+                var icon = document.createElement("i");
+                $(icon).addClass('ui red label').html(numUnread);
+                $("#suggested-resources i").replaceWith(icon);
+            }
+        });
+      </script>
+    {% endif %}
 {% endmacro %}
 
 {% macro mobile_nav(current_user, endpoints=None) %}
     <div class="mobile only row">
         <div class="ui fixed inverted black main menu">
-            {{ header_items(current_user) }}
+            {{ header_items(current_user, 'mobile') }}
             <div class="right menu">
                 <a class="icon item" id="open-nav"><i class="sidebar icon"></i></a>
             </div>
@@ -97,6 +133,7 @@
             {% if endpoints %}
                 {{ render_menu_items(endpoints) }}
             {% endif %}
+            {{ mobile_info_items(current_user) }}
             {{ account_items(current_user) }}
         </div>
     </div>
@@ -108,8 +145,9 @@
     <div class="computer tablet only row">
         <div class="ui fixed inverted black main menu">
             <div class="ui container">
-                {{ header_items(current_user) }}
+                {{ header_items(current_user, 'desktop') }}
                 <div class="right menu">
+                    {{ desktop_info_items(current_user) }}
                     {{ account_items(current_user) }}
                 </div>
             </div>

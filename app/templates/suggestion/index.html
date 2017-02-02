@@ -2,7 +2,7 @@
 <!--TODO: have a "mark as read" column in the table -->
 {% block content %}
   <div class="ui text container">
-    <h2 class="ui header">
+    <h2 class="ui centered header">
         Suggestions
     </h2>
     <table class="ui unstackable celled table">
@@ -20,7 +20,7 @@
       <tbody>
         {% for suggestion in suggestions %}
           <tr>
-            <td>{{ suggestion.submission_time }}</td>
+            <td>{{ suggestion.submission_time.strftime('%m-%d-%Y') }}</td>
             <td>{{ suggestion.resource_name }}</td>
             <td>{{ suggestion.resource_address }}</td>
             <td>{{ suggestion.suggestion_text }}</td>
