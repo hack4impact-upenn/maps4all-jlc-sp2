@@ -7,8 +7,8 @@ $accent-color: #2C9FA3;
 $accent-color-light: #2DBDC2;
 $accent-color-grey: #EEEEEE;
 $accent-color-dark-grey: #555;
-$secondary-color: #FF937C;
-$secondary-color-light: #FFA491;
+$secondary-color: #DC214C;
+$secondary-color-light: #EA7993;
 $subheader-color: #AAAAAA;
 $font-choice: 'Nunito Sans', sans-serif;
 
@@ -124,6 +124,7 @@ nav .mobile.only.row {
   box-shadow: none;
   color: #fff;
   font-family: $font-choice;
+  font-weight: 600;
   left: 0;
   margin: auto;
   overflow: visible;
@@ -132,6 +133,10 @@ nav .mobile.only.row {
   text-align: center;
   width: 60%;
   z-index: 1000;
+
+  .close.icon {
+    opacity: 1;
+  }
 }
 
 // Tables

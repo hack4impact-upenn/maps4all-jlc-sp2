@@ -2,8 +2,8 @@ $accent-color: #2C9FA3;
 $accent-color-light: #2DBDC2;
 $accent-color-grey: #EEEEEE;
 $accent-color-dark-grey: #555;
-$secondary-color: #FF937C;
-$secondary-color-light: #FFA491;
+$secondary-color: #DC214C;
+$secondary-color-light: #EA7993;
 $font-choice: 'Nunito Sans', sans-serif;
 $font-size: 14px;
 $input-color: rgba(0, 0, 0, 0.4);
@@ -196,8 +196,13 @@ $input-color: rgba(0, 0, 0, 0.4);
   }
 
   &.list-selected {
-    .ui.header a, #resource-list-chevron a {
+    .ui.header a, #resource-list-chevron a{
       color: $secondary-color;
+    }
+
+    #avg_rating.ui.label, #category.ui.label {
+      color: $secondary-color-light;
+      border: 1px solid $secondary-color-light;
     }
   }
 }
@@ -231,7 +236,7 @@ $input-color: rgba(0, 0, 0, 0.4);
     background-color: $secondary-color;
     color: white;
     cursor: pointer;
-    font-weight: 300;
+    font-weight: 600;
     position: relative;
     right: 8px;
     text-decoration: none;
@@ -317,11 +322,13 @@ $input-color: rgba(0, 0, 0, 0.4);
 
   .successMessage {
     display: none;
+    color: 1px solid $secondary-color;
   }
 
   .textSentSuccess{
     display: none;
     margin-top: 3px;
+    color: 1px solid $secondary-color;
   }
 
   #sms-header {
