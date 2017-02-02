@@ -78,6 +78,16 @@ nav {
       width: 5.5em;
     }
   }
+
+  .ui.container #h4i-logo {
+    img {
+      width: 1.5em;
+    }
+  }
+
+  .ui.container {
+    width: 95%;
+  }
 }
 
 // Logo border
@@ -173,5 +183,22 @@ h1.ui.header, h2.ui.header {
 
   > .close.icon {
     top: 1em;
+  }
+}
+
+// Scrollbar
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
+#h4i-full-logo {
+  img {
+    width: 8em;
   }
 }
