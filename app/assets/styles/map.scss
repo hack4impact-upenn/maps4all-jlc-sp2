@@ -2,8 +2,8 @@ $accent-color: #2C9FA3;
 $accent-color-light: #2DBDC2;
 $accent-color-grey: #EEEEEE;
 $accent-color-dark-grey: #555;
-$secondary-color: #FF937C;
-$secondary-color-light: #FFA491;
+$secondary-color: #dc214c;
+$secondary-color-light: #EA7993;
 $font-choice: 'Nunito Sans', sans-serif;
 $font-size: 14px;
 $input-color: rgba(0, 0, 0, 0.4);
@@ -176,8 +176,13 @@ $input-color: rgba(0, 0, 0, 0.4);
   }
 
   &.list-selected {
-    .ui.header a, #resource-list-chevron a {
+    .ui.header a, #resource-list-chevron a{
       color: $secondary-color;
+    }
+
+    #avg_rating.ui.label {
+      color: $secondary-color-light;
+      border: 1px solid $secondary-color-light;
     }
   }
 }
