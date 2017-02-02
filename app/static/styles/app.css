@@ -570,21 +570,26 @@ h1.ui.header, h2.ui.header {
   margin-top: 2px;
 }
 @media -sass-debug-info{filename{}line{font-family:\00003336}}
+#resource-info #twilio-input {
+  width: 100%;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003340}}
 #resource-info .disclaimer-sms {
   font-size: 10;
   margin-bottom: 2px;
   margin-top: 2px;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003342}}
+@media -sass-debug-info{filename{}line{font-family:\00003346}}
 #resource-info .sub.header {
   font-size: 14px;
+  margin-bottom: 0.5em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003346}}
+@media -sass-debug-info{filename{}line{font-family:\00003351}}
 #resource-info #text-save-submit {
   margin-bottom: 2px;
   margin-top: 3px;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003351}}
+@media -sass-debug-info{filename{}line{font-family:\00003356}}
 #resource-info .ui.label {
   background-color: inherit;
   border: 1px solid #2DBDC2;
@@ -595,17 +600,17 @@ h1.ui.header, h2.ui.header {
   margin-bottom: 1em;
   padding-top: 0.4em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003362}}
+@media -sass-debug-info{filename{}line{font-family:\00003367}}
 #resource-info .ui.header {
   color: #2C9FA3;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003367}}
+@media -sass-debug-info{filename{}line{font-family:\00003372}}
 #descriptor-name {
   font-family: "Nunito Sans", sans-serif;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003371}}
+@media -sass-debug-info{filename{}line{font-family:\00003376}}
 #back-button {
   color: #2C9FA3;
   display: inline-block;
@@ -614,42 +619,42 @@ h1.ui.header, h2.ui.header {
   z-index: 2;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003379}}
+@media -sass-debug-info{filename{}line{font-family:\00003384}}
 #back-button:hover {
   color: #2DBDC2;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003383}}
+@media -sass-debug-info{filename{}line{font-family:\00003388}}
 #single-resource-map {
   height: 400px;
   width: 100%;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003388}}
+@media -sass-debug-info{filename{}line{font-family:\00003393}}
 #user-rating, .successMessage {
   margin-bottom: 1em;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003392}}
+@media -sass-debug-info{filename{}line{font-family:\00003397}}
 #user-rating {
   background-color: #F8F8F8;
   box-shadow: none;
   margin-top: 1em;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003398}}
+@media -sass-debug-info{filename{}line{font-family:\00003403}}
 #avg_rating {
   color: #2C9FA3;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003402}}
+@media -sass-debug-info{filename{}line{font-family:\00003407}}
 #submit-rating {
   background-color: #2C9FA3;
   color: #fff;
   font-weight: 400;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003408}}
+@media -sass-debug-info{filename{}line{font-family:\00003413}}
 #submit-rating:hover {
   background-color: #2DBDC2;
 }
