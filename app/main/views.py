@@ -149,7 +149,8 @@ def rights():
 @main.route('/hotlines')
 def hotlines():
    editable_html_obj = EditableHTML.get_editable_html('hotlines')
-   return render_template('main/hotlines.html')
+   return render_template('main/hotlines.html',
+                          editable_html_obj=editable_html_obj)
 
 @main.route('/overview')
 @login_required
