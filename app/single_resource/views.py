@@ -1,13 +1,13 @@
-from flask import abort, flash, redirect, render_template, url_for, request
+from flask import abort, flash, redirect, render_template, request, url_for
 from flask.ext.login import login_required
-from sqlalchemy.exc import IntegrityError
-from wtforms.fields import SelectMultipleField, TextAreaField
-from wtforms.fields import SelectMultipleField, SelectField, TextAreaField
 from flask_wtf.file import InputRequired
+from sqlalchemy.exc import IntegrityError
+from wtforms.fields import SelectField, SelectMultipleField, TextAreaField
 
-from .. import db
-from ..models import Descriptor, OptionAssociation, Resource, TextAssociation, RequiredOptionDescriptor
 from . import single_resource
+from .. import db
+from ..models import (Descriptor, OptionAssociation, RequiredOptionDescriptor,
+                      Resource, TextAssociation)
 from .forms import SingleResourceForm
 
 

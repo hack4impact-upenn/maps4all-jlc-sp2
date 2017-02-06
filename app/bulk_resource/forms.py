@@ -1,17 +1,8 @@
 from flask.ext.wtf import Form
-from flask_wtf.file import (
-    InputRequired
-)
-from wtforms.fields import (
-    FieldList,
-    FormField,
-    RadioField,
-    SubmitField,
-    TextAreaField,
-    StringField,
-    SelectField,
-    SelectMultipleField
-)
+from flask_wtf.file import InputRequired
+from wtforms.fields import (FieldList, FormField, RadioField, SelectField,
+                            SelectMultipleField, StringField, SubmitField,
+                            TextAreaField)
 
 
 class NavigationForm(Form):

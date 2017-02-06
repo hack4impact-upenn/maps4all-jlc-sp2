@@ -1,17 +1,22 @@
 import json
 import os
-from twilio.rest.lookups import TwilioLookupsClient
-from twilio.rest import TwilioRestClient
-from flask import render_template, url_for, request, jsonify
+from datetime import datetime
+
+from flask import jsonify, render_template, request, url_for
 from flask.ext.login import login_required
 from twilio import twiml
-from app import csrf
-from .. import db
-from ..models import EditableHTML, Resource, Rating, Descriptor, OptionAssociation, RequiredOptionDescriptor
-from . import main
+from twilio.rest import TwilioRestClient
+from twilio.rest.lookups import TwilioLookupsClient
 from wtforms.fields import SelectMultipleField, TextAreaField
+
+from app import csrf
+
+from . import main
+from .. import db
+from ..models import (Descriptor, EditableHTML, OptionAssociation, Rating,
+                      RequiredOptionDescriptor, Resource)
 from ..single_resource.forms import SingleResourceForm
-from datetime import datetime
+
 
 @main.route('/')
 def index():

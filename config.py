@@ -1,6 +1,7 @@
+import logging
 import os
+import sys
 import urlparse
-import logging, sys
 from logging.handlers import SMTPHandler
 
 basedir = os.path.abspath(os.path.dirname(__file__))

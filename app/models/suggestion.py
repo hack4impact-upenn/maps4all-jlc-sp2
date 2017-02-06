@@ -1,5 +1,7 @@
 from datetime import datetime
+
 import pytz
+
 from .. import db
 
 
@@ -85,4 +87,3 @@ class Suggestion(db.Model):
                 db.session.commit()
             except IntegrityError:
                 db.session.rollback()
-

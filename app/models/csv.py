@@ -1,6 +1,6 @@
-from .. import db
-
 from sqlalchemy import desc
+
+from .. import db
 
 
 class CsvStorage(db.Model):

@@ -1,17 +1,9 @@
 from flask.ext.wtf import Form
-from wtforms.fields import (
-    StringField,
-    SelectField,
-    TextField,
-    TextAreaField,
-    SubmitField,
-)
+from wtforms.fields import (SelectField, StringField, SubmitField,
+                            TextAreaField, TextField)
 from wtforms.fields.html5 import EmailField
-from wtforms.validators import (
-    InputRequired,
-    Email,
-    Length,
-)
+from wtforms.validators import Email, InputRequired, Length
+
 
 class ContactForm(Form):
     name = StringField('Name', validators=[
@@ -41,4 +33,3 @@ class EditCategoryNameForm(Form):
         Length(1, 250),
     ])
     submit = SubmitField('Update name')
-

@@ -1,49 +1,29 @@
-from datetime import datetime
 import json
-import geocoder
-import time
 import os
+import time
+from datetime import datetime
 
-from flask import abort, jsonify, redirect, render_template, request, url_for, flash
+import geocoder
+from flask import (abort, flash, jsonify, redirect, render_template, request,
+                   url_for)
 from flask.ext.login import current_user, login_required
-
-from flask_wtf.file import (
-    InputRequired
-)
-from wtforms.fields import (
-    FieldList,
-    RadioField,
-    FormField,
-    SelectMultipleField
-)
 from flask.ext.wtf import Form
+from flask_wtf.file import InputRequired
+from wtforms.fields import (FieldList, FormField, RadioField,
+                            SelectMultipleField)
 
 from app import csrf
+from forms import (DetermineDescriptorTypesForm, DetermineOptionsForm,
+                   DetermineRequiredOptionDescriptorForm, NavigationForm,
+                   RequiredOptionDescriptorMissingForm, SaveCsvDataForm)
+
 from . import bulk_resource
 from .. import db
-from ..models import (
-    CsvStorage,
-    CsvRow,
-    CsvDescriptor,
-    CsvDescriptorRemove,
-    GeocoderCache,
-    Descriptor,
-    OptionAssociation,
-    Rating,
-    Resource,
-    RequiredOptionDescriptor,
-    RequiredOptionDescriptorConstructor,
-    Suggestion,
-    TextAssociation
-)
-from forms import (
-    DetermineRequiredOptionDescriptorForm,
-    RequiredOptionDescriptorMissingForm,
-    DetermineDescriptorTypesForm,
-    DetermineOptionsForm,
-    NavigationForm,
-    SaveCsvDataForm
-)
+from ..models import (CsvDescriptor, CsvDescriptorRemove, CsvRow, CsvStorage,
+                      Descriptor, GeocoderCache, OptionAssociation, Rating,
+                      RequiredOptionDescriptor,
+                      RequiredOptionDescriptorConstructor, Resource,
+                      Suggestion, TextAssociation)
 
 
 @csrf.exempt

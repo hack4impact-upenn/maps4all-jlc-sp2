@@ -1,21 +1,24 @@
-import pytz
 import os
-
 from datetime import datetime
+
+import pytz
 from flask import abort, flash, redirect, render_template, url_for
 from flask.ext.login import login_required
 from flask.ext.rq import get_queue
 from sqlalchemy.exc import IntegrityError
+from wtforms.fields import SelectField, TextAreaField
+
+from app import create_app
+from forms import SuggestionAdvancedForm, SuggestionBasicForm
 
 from . import suggestion
 from .. import db
-from ..models import Resource, Suggestion, Descriptor, TextAssociation, OptionAssociation
-from forms import SuggestionBasicForm, SuggestionAdvancedForm
-from wtforms.fields import TextAreaField, SelectField
-from ..single_resource.views import save_associations
-from ..single_resource.forms import SingleResourceForm
-from app import create_app
 from ..email import send_email
+from ..models import (Descriptor, OptionAssociation, Resource, Suggestion,
+                      TextAssociation)
+from ..single_resource.forms import SingleResourceForm
+from ..single_resource.views import save_associations
+
 
 @suggestion.route('/')
 @login_required

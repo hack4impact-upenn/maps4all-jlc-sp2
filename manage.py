@@ -1,23 +1,16 @@
 #!/usr/bin/env python
 import os
-from app import create_app, db
-from app.models import (
-    CsvBodyCell,
-    CsvBodyRow,
-    CsvContainer,
-    CsvHeaderCell,
-    CsvHeaderRow,
-    Resource,
-    Role,
-    User,
-    RequiredOptionDescriptor,
-)
-from redis import Redis
-from rq import Worker, Queue, Connection
 from config import Config
-from flask.ext.script import Manager, Shell
-from flask.ext.migrate import Migrate, MigrateCommand
 
+from flask.ext.migrate import Migrate, MigrateCommand
+from flask.ext.script import Manager, Shell
+from redis import Redis
+from rq import Connection, Queue, Worker
+
+from app import create_app, db
+from app.models import (CsvBodyCell, CsvBodyRow, CsvContainer, CsvHeaderCell,
+                        CsvHeaderRow, RequiredOptionDescriptor, Resource, Role,
+                        User)
 
 # Import settings from .env file. Must define FLASK_CONFIG
 if os.path.exists('.env'):

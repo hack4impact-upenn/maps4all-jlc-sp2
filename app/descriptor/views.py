@@ -1,28 +1,19 @@
-from flask import abort, flash, render_template, redirect, url_for, request
+from flask import abort, flash, redirect, render_template, request, url_for
 from flask.ext.login import login_required
+from flask_wtf.file import InputRequired
 from sqlalchemy.exc import IntegrityError
 from wtforms.fields import SelectField
-from flask_wtf.file import InputRequired
 
-from forms import (
-    AddDescriptorOptionValueForm,
-    EditDescriptorNameForm,
-    EditDescriptorOptionValueForm,
-    EditDescriptorSearchableForm,
-    FixAllResourceOptionValueForm,
-    NewDescriptorForm,
-    ChangeRequiredOptionDescriptorForm,
-    RequiredOptionDescriptorMissingForm
-)
+from forms import (AddDescriptorOptionValueForm,
+                   ChangeRequiredOptionDescriptorForm, EditDescriptorNameForm,
+                   EditDescriptorOptionValueForm, EditDescriptorSearchableForm,
+                   FixAllResourceOptionValueForm, NewDescriptorForm,
+                   RequiredOptionDescriptorMissingForm)
+
 from . import descriptor
 from .. import db
-from ..models import (
-    Descriptor,
-    OptionAssociation,
-    Resource,
-    RequiredOptionDescriptor,
-    RequiredOptionDescriptorConstructor
-)
+from ..models import (Descriptor, OptionAssociation, RequiredOptionDescriptor,
+                      RequiredOptionDescriptorConstructor, Resource)
 
 
 @descriptor.route('/')
@@ -420,4 +411,3 @@ def review_required_option_descriptor():
         form.resources[j].label = r_name
         form.resources[j].choices = [(v, v) for v in req_opt_desc_const.values]
     return render_template('descriptor/review_required_option_descriptor.html', form=form)
-

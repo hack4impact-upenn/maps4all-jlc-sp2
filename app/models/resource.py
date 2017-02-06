@@ -1,5 +1,5 @@
 from .. import db
-from .. models import Rating
+from ..models import Rating
 
 
 class OptionAssociation(db.Model):

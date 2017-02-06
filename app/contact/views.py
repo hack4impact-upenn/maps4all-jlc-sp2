@@ -1,16 +1,18 @@
 import os
-from flask import render_template, redirect, url_for, abort, flash
+
+from flask import abort, flash, redirect, render_template, url_for
 from flask.ext.login import login_required
 from flask.ext.rq import get_queue
-
 from wtforms.fields import SelectField
 
-from .. import db
-from ..models import EditableHTML, Resource, ContactCategory
-from . import contact
-from forms import ContactForm, ContactCategoryForm, EditCategoryNameForm
 from app import create_app
+from forms import ContactCategoryForm, ContactForm, EditCategoryNameForm
+
+from . import contact
+from .. import db
 from ..email import send_email
+from ..models import ContactCategory, EditableHTML, Resource
+
 
 @contact.route('/', methods=['GET', 'POST'])
 def index():
