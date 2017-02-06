@@ -26,9 +26,16 @@ migrate = Migrate(app, db)
 
 
 def make_shell_context():
-    return dict(app=app, db=db, User=User, Role=Role, CsvBodyCell=CsvBodyCell,
-                CsvBodyRow=CsvBodyRow, CsvContainer=CsvContainer,
-                CsvHeaderCell=CsvHeaderCell, CsvHeaderRow=CsvHeaderRow)
+    return dict(
+        app=app,
+        db=db,
+        User=User,
+        Role=Role,
+        CsvBodyCell=CsvBodyCell,
+        CsvBodyRow=CsvBodyRow,
+        CsvContainer=CsvContainer,
+        CsvHeaderCell=CsvHeaderCell,
+        CsvHeaderRow=CsvHeaderRow)
 
 
 manager.add_command('shell', Shell(make_context=make_shell_context))
@@ -55,12 +62,13 @@ def recreate_db():
     db.session.commit()
 
 
-@manager.option('-n',
-                '--number-users',
-                default=10,
-                type=int,
-                help='Number of each model type to create',
-                dest='number_users')
+@manager.option(
+    '-n',
+    '--number-users',
+    default=10,
+    type=int,
+    help='Number of each model type to create',
+    dest='number_users')
 def add_fake_data(number_users):
     """
     Adds fake data to the database.
@@ -76,9 +84,7 @@ def setup_dev():
 
     admin_email = os.environ.get('ADMIN_EMAIL')
     if User.query.filter_by(email=admin_email).first() is None:
-        User.create_confirmed_admin('Default',
-                                    'Admin',
-                                    admin_email,
+        User.create_confirmed_admin('Default', 'Admin', admin_email,
                                     'password')
 
 
@@ -102,12 +108,12 @@ def run_worker():
         host=app.config['RQ_DEFAULT_HOST'],
         port=app.config['RQ_DEFAULT_PORT'],
         db=0,
-        password=app.config['RQ_DEFAULT_PASSWORD']
-    )
+        password=app.config['RQ_DEFAULT_PASSWORD'])
 
     with Connection(conn):
         worker = Worker(map(Queue, listen))
         worker.work()
+
 
 if __name__ == '__main__':
     manager.run()

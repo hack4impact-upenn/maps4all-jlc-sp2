@@ -10,13 +10,14 @@ class OptionAssociation(db.Model):
     """
     __tablename__ = 'option_associations'
     id = db.Column(db.Integer, primary_key=True)
-    resource_id = db.Column(db.Integer, db.ForeignKey('resources.id', ondelete='CASCADE'))
-    descriptor_id = db.Column(db.Integer, db.ForeignKey('descriptors.id', ondelete='CASCADE'))
+    resource_id = db.Column(db.Integer,
+                            db.ForeignKey('resources.id', ondelete='CASCADE'))
+    descriptor_id = db.Column(
+        db.Integer, db.ForeignKey('descriptors.id', ondelete='CASCADE'))
     option = db.Column(db.Integer)
-    resource = db.relationship('Resource',
-                               back_populates='option_descriptors')
-    descriptor = db.relationship('Descriptor',
-                                 back_populates='option_resources')
+    resource = db.relationship('Resource', back_populates='option_descriptors')
+    descriptor = db.relationship(
+        'Descriptor', back_populates='option_resources')
 
     def __repr__(self):
         return '%s: %s' % (self.descriptor.name,
@@ -31,8 +32,10 @@ class TextAssociation(db.Model):
     """
     __tablename__ = 'text_associations'
     id = db.Column(db.Integer, primary_key=True)
-    resource_id = db.Column(db.Integer, db.ForeignKey('resources.id', ondelete='CASCADE'))
-    descriptor_id = db.Column(db.Integer, db.ForeignKey('descriptors.id', ondelete='CASCADE'))
+    resource_id = db.Column(db.Integer,
+                            db.ForeignKey('resources.id', ondelete='CASCADE'))
+    descriptor_id = db.Column(
+        db.Integer, db.ForeignKey('descriptors.id', ondelete='CASCADE'))
     text = db.Column(db.Text)
     resource = db.relationship('Resource', back_populates='text_descriptors')
     descriptor = db.relationship('Descriptor', back_populates='text_resources')
@@ -49,18 +52,17 @@ class Descriptor(db.Model):
     __tablename__ = 'descriptors'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(500), index=True)
-    values = db.Column(db.PickleType) # should only have value for option descriptor
+    values = db.Column(
+        db.PickleType)  # should only have value for option descriptor
     is_searchable = db.Column(db.Boolean)
     text_resources = db.relationship(
         'TextAssociation',
         back_populates='descriptor',
-        cascade='all, delete-orphan'
-    )
+        cascade='all, delete-orphan')
     option_resources = db.relationship(
         'OptionAssociation',
         back_populates='descriptor',
-        cascade='all, delete-orphan'
-    )
+        cascade='all, delete-orphan')
 
     def __repr__(self):
         return '<Descriptor \'%s\'>' % self.name
@@ -80,7 +82,8 @@ class RequiredOptionDescriptor(db.Model):
     """
     __tablename__ = 'required_option_descriptor'
     id = db.Column(db.Integer, primary_key=True)
-    descriptor_id = db.Column(db.Integer); # -1 if none
+    descriptor_id = db.Column(db.Integer)
+    # -1 if none
 
     @staticmethod
     def init_required_option_descriptor():
@@ -102,25 +105,21 @@ class Resource(db.Model):
     text_descriptors = db.relationship(
         'TextAssociation',
         back_populates='resource',
-        cascade='all, delete-orphan'
-    )
+        cascade='all, delete-orphan')
     option_descriptors = db.relationship(
         'OptionAssociation',
         back_populates='resource',
-        cascade='all, delete-orphan'
-    )
+        cascade='all, delete-orphan')
     suggestions = db.relationship(
         'Suggestion',
         backref='resource',
         uselist=True,
-        cascade='all, delete-orphan'
-    )
+        cascade='all, delete-orphan')
     ratings = db.relationship(
         'Rating',
         backref='resource',
         uselist=True,
-        cascade='all, delete-orphan',
-    )
+        cascade='all, delete-orphan', )
 
     def __repr__(self):
         return '<Resource \'%s\'>' % self.name
@@ -140,23 +139,18 @@ class Resource(db.Model):
         options = []
 
         for i in range(num_options):
-            options.append(Descriptor(
-                name=fake.word(),
-                values=['True', 'False'],
-                is_searchable=fake.boolean()
-            ))
+            options.append(
+                Descriptor(
+                    name=fake.word(),
+                    values=['True', 'False'],
+                    is_searchable=fake.boolean()))
 
         for i in range(count):
 
             # Generates random coordinates around Philadelphia.
-            latitude = str(fake.geo_coordinate(
-                center=center_lat,
-                radius=0.01
-            ))
-            longitude = str(fake.geo_coordinate(
-                center=center_long,
-                radius=0.01
-            ))
+            latitude = str(fake.geo_coordinate(center=center_lat, radius=0.01))
+            longitude = str(
+                fake.geo_coordinate(center=center_long, radius=0.01))
 
             location = geolocater.reverse(latitude + ', ' + longitude)
 
@@ -166,8 +160,7 @@ class Resource(db.Model):
                     name=fake.name(),
                     address=location.address,
                     latitude=latitude,
-                    longitude=longitude
-                )
+                    longitude=longitude)
 
                 oa = OptionAssociation(option=randint(0, 1))
                 oa.descriptor = options[randint(0, num_options - 1)]
@@ -175,10 +168,7 @@ class Resource(db.Model):
 
                 ta = TextAssociation(text=fake.sentence(nb_words=10))
                 ta.descriptor = Descriptor(
-                    name=fake.word(),
-                    values=[],
-                    is_searchable=fake.boolean()
-                )
+                    name=fake.word(), values=[], is_searchable=fake.boolean())
                 resource.text_descriptors.append(ta)
 
                 db.session.add(resource)
@@ -194,8 +184,7 @@ class Resource(db.Model):
         if req_opt_desc:
             req_opt_desc = req_opt_desc[0]
             req_opt_desc = Descriptor.query.filter_by(
-                id=req_opt_desc.descriptor_id
-            ).first()
+                id=req_opt_desc.descriptor_id).first()
 
         resources_as_dicts = []
         for resource in resources:
@@ -206,8 +195,7 @@ class Resource(db.Model):
             if req_opt_desc:
                 associations = OptionAssociation.query.filter_by(
                     resource_id=resource.id,
-                    descriptor_id=req_opt_desc.id
-                ).all()
+                    descriptor_id=req_opt_desc.id).all()
                 req = [a.descriptor.values[a.option] for a in associations]
             res['requiredOpts'] = req
 

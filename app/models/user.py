@@ -24,7 +24,9 @@ class Role(db.Model):
     def insert_roles():
         roles = {
             'Administrator': (
-                Permission.ADMINISTER, 'admin', False  # grants all permissions
+                Permission.ADMINISTER,
+                'admin',
+                False  # grants all permissions
             )
         }
         for r in roles:
@@ -50,12 +52,16 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(500), unique=True, index=True)
     password_hash = db.Column(db.String(128))
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
-    csv_containers = db.relationship('CsvContainer', backref='user',
-                                     uselist=True,
-                                     order_by='CsvContainer.date_uploaded')
-    csv_storages = db.relationship('CsvStorage', backref='user',
-                                     uselist=True,
-                                     order_by='CsvStorage.date_uploaded')
+    csv_containers = db.relationship(
+        'CsvContainer',
+        backref='user',
+        uselist=True,
+        order_by='CsvContainer.date_uploaded')
+    csv_storages = db.relationship(
+        'CsvStorage',
+        backref='user',
+        uselist=True,
+        order_by='CsvStorage.date_uploaded')
 
     def __init__(self, **kwargs):
         super(User, self).__init__(**kwargs)
@@ -171,8 +177,7 @@ class User(UserMixin, db.Model):
                 password=fake.password(),
                 confirmed=True,
                 role=choice(roles),
-                **kwargs
-            )
+                **kwargs)
             db.session.add(u)
             try:
                 db.session.commit()
@@ -191,8 +196,7 @@ class User(UserMixin, db.Model):
             password=password,
             confirmed=True,
             role=Role.query.filter_by(
-                permissions=Permission.ADMINISTER).first()
-        )
+                permissions=Permission.ADMINISTER).first())
         db.session.add(u)
         try:
             db.session.commit()
