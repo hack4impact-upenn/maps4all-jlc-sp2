@@ -180,7 +180,7 @@ h1.ui.header, h2.ui.header {
 }
 
 // Message
-.ui.positive.message {
+.ui.positive.message, .ui.success.message, .ui.error.message {
   background-color: transparent;
   border: 1px solid $secondary-color;
   box-shadow: none;
@@ -188,6 +188,10 @@ h1.ui.header, h2.ui.header {
 
   > .close.icon {
     top: 1em;
+  }
+
+  .header {
+    color: $secondary-color;
   }
 }
 

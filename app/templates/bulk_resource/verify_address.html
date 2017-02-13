@@ -1,0 +1,20 @@
+{% extends 'layouts/base.html' %}
+{% import 'macros/form_macros.html' as f %}
+
+{% block content %}
+    <div class="ui stackable centered grid container">
+        <div class="twelve wide column">
+            <h2 class="ui header">
+                Verify Address
+                <div class="sub header">
+                  Google Maps API Geocoder Check
+                </div>
+            </h2>
+            <p>Check if the address is geocodable by Google Maps API. Bulk
+            resource CSV upload depends on the Google Maps API being able to
+            geocode all the addresses in the CSV or else throw an error.
+            This is a way to check if your address will be accepted.</p>
+            {{ f.render_form(form) }}
+        </div>
+    </div>
+{% endblock %}
