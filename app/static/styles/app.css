@@ -220,35 +220,51 @@ h1.ui.header, h2.ui.header {
 }
 
 @media -sass-debug-info{filename{}line{font-family:\00003183}}
-.ui.positive.message, .ui.success.message, .ui.error.message {
+.ui.positive.message, .ui.success.message {
+  background-color: transparent;
+  border: 1px solid #2C9FA3;
+  box-shadow: none;
+  color: #2C9FA3;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003189}}
+.ui.positive.message > .close.icon, .ui.success.message > .close.icon {
+  top: 1em;
+}
+@media -sass-debug-info{filename{}line{font-family:\00003193}}
+.ui.positive.message .header, .ui.success.message .header {
+  color: #2C9FA3;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\00003198}}
+.ui.error.message {
   background-color: transparent;
   border: 1px solid #DC214C;
   box-shadow: none;
   color: #DC214C;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003189}}
-.ui.positive.message > .close.icon, .ui.success.message > .close.icon, .ui.error.message > .close.icon {
+@media -sass-debug-info{filename{}line{font-family:\00003204}}
+.ui.error.message > .close.icon {
   top: 1em;
 }
-@media -sass-debug-info{filename{}line{font-family:\00003193}}
-.ui.positive.message .header, .ui.success.message .header, .ui.error.message .header {
+@media -sass-debug-info{filename{}line{font-family:\00003208}}
+.ui.error.message .header {
   color: #DC214C;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003199}}
+@media -sass-debug-info{filename{}line{font-family:\00003214}}
 ::-webkit-scrollbar {
   -webkit-appearance: none;
   width: 10px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003203}}
+@media -sass-debug-info{filename{}line{font-family:\00003218}}
 ::-webkit-scrollbar-thumb {
   border-radius: 4px;
   background-color: rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }
 
-@media -sass-debug-info{filename{}line{font-family:\00003210}}
+@media -sass-debug-info{filename{}line{font-family:\00003225}}
 #h4i-full-logo img {
   width: 8em;
 }

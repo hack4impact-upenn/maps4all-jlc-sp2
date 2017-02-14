@@ -180,7 +180,22 @@ h1.ui.header, h2.ui.header {
 }
 
 // Message
-.ui.positive.message, .ui.success.message, .ui.error.message {
+.ui.positive.message, .ui.success.message {
+  background-color: transparent;
+  border: 1px solid $accent-color;
+  box-shadow: none;
+  color: $accent-color;
+
+  > .close.icon {
+    top: 1em;
+  }
+
+  .header {
+    color: $accent-color;
+  }
+}
+
+.ui.error.message {
   background-color: transparent;
   border: 1px solid $secondary-color;
   box-shadow: none;
