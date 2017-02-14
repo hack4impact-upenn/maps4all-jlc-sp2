@@ -1,5 +1,7 @@
 from datetime import datetime
+
 import pytz
+
 from .. import db
 
 
@@ -9,7 +11,8 @@ class Suggestion(db.Model):
     """
     __tablename__ = 'suggestions'
     id = db.Column(db.Integer, primary_key=True)
-    resource_id = db.Column(db.Integer, db.ForeignKey('resources.id', ondelete='CASCADE'))
+    resource_id = db.Column(db.Integer,
+                            db.ForeignKey('resources.id', ondelete='CASCADE'))
     suggestion_text = db.Column(db.Text)
     # 0 stands for read, 1 stands for unread
     read = db.Column(db.Boolean, default=False)
@@ -41,10 +44,15 @@ class Suggestion(db.Model):
             s_contact_number = "123-456-7890"
             s_resource_name = fake.word()
             s_resource_address = fake.word()
-            s_insert = Suggestion(suggestion_text=s_text,
-                                  read=s_read, submission_time=s_timestamp, contact_name=s_contact_name,
-                                  contact_email=s_contact_email, contact_phone_number=s_contact_number,
-                                  resource_name=s_resource_name, resource_address=s_resource_address)
+            s_insert = Suggestion(
+                suggestion_text=s_text,
+                read=s_read,
+                submission_time=s_timestamp,
+                contact_name=s_contact_name,
+                contact_email=s_contact_email,
+                contact_phone_number=s_contact_number,
+                resource_name=s_resource_name,
+                resource_address=s_resource_address)
             db.session.add(s_insert)
             try:
                 db.session.commit()
@@ -77,12 +85,16 @@ class Suggestion(db.Model):
             s_contact_name = fake.word()
             s_contact_email = fake.word() + "@" + fake.word() + ".com"
             s_contact_number = "123-456-7890"
-            s_edit = Suggestion(resource_id=r_added.id, suggestion_text=s_text,
-                                read=s_read, submission_time=s_timestamp, contact_name=s_contact_name,
-                                contact_email=s_contact_email, contact_phone_number=s_contact_number)
+            s_edit = Suggestion(
+                resource_id=r_added.id,
+                suggestion_text=s_text,
+                read=s_read,
+                submission_time=s_timestamp,
+                contact_name=s_contact_name,
+                contact_email=s_contact_email,
+                contact_phone_number=s_contact_number)
             db.session.add(s_edit)
             try:
                 db.session.commit()
             except IntegrityError:
                 db.session.rollback()
-

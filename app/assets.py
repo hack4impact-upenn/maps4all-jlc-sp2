@@ -1,21 +1,10 @@
 from flask.ext.assets import Bundle
 
-app_css = Bundle(
-    '*.scss',
-    filters='scss',
-    output='styles/app.css'
-)
+app_css = Bundle('*.scss', filters='scss', output='styles/app.css')
 
-app_js = Bundle(
-    '*.js',
-    filters='jsmin',
-    output='scripts/app.js'
-)
+app_js = Bundle('*.js', filters='jsmin', output='scripts/app.js')
 
-vendor_css = Bundle(
-    'vendor/*.css',
-    output='styles/vendor.css'
-)
+vendor_css = Bundle('vendor/*.css', output='styles/vendor.css')
 
 # Need to specify vendor order or JS errors on heroku
 vendor_js = Bundle(
@@ -29,5 +18,4 @@ vendor_js = Bundle(
     'vendor/papaparse.min.js',
     'vendor/zxcvbn.js',
     filters='jsmin',
-    output='scripts/vendor.js'
-)
+    output='scripts/vendor.js')

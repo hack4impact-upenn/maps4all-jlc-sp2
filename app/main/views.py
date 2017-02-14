@@ -1,17 +1,22 @@
 import json
 import os
-from twilio.rest.lookups import TwilioLookupsClient
-from twilio.rest import TwilioRestClient
-from flask import render_template, url_for, request, jsonify
+from datetime import datetime
+
+from flask import jsonify, render_template, request, url_for
 from flask.ext.login import login_required
 from twilio import twiml
-from app import csrf
-from .. import db
-from ..models import EditableHTML, Resource, Rating, Descriptor, OptionAssociation, RequiredOptionDescriptor
-from . import main
+from twilio.rest import TwilioRestClient
+from twilio.rest.lookups import TwilioLookupsClient
 from wtforms.fields import SelectMultipleField, TextAreaField
+
+from app import csrf
+
+from . import main
+from .. import db
+from ..models import (Descriptor, EditableHTML, OptionAssociation, Rating,
+                      RequiredOptionDescriptor, Resource)
 from ..single_resource.forms import SingleResourceForm
-from datetime import datetime
+
 
 @main.route('/')
 def index():
@@ -20,12 +25,13 @@ def index():
     if req_opt_desc:
         req_opt_desc = req_opt_desc[0]
         req_opt_desc = Descriptor.query.filter_by(
-            id=req_opt_desc.descriptor_id
-        ).first()
+            id=req_opt_desc.descriptor_id).first()
         if req_opt_desc is not None:
             req_opt_id = req_opt_desc.id
     options = Descriptor.query.all()
-    options = [o for o in options if len(o.text_resources) == 0 and o.id != req_opt_id]
+    options = [
+        o for o in options if len(o.text_resources) == 0 and o.id != req_opt_id
+    ]
     options_dict = {}
     for o in options:
         options_dict[o.name] = o.values
@@ -33,13 +39,19 @@ def index():
     if req_opt_desc:
         for val in req_opt_desc.values:
             req_options[val] = False
-    return render_template('main/index.html', options=options_dict, req_options=req_options, req_desc=req_opt_desc)
+    return render_template(
+        'main/index.html',
+        options=options_dict,
+        req_options=req_options,
+        req_desc=req_opt_desc)
+
 
 @main.route('/get-resources')
 def get_resources():
     resources = Resource.query.all()
     resources_as_dicts = Resource.get_resources_as_dicts(resources)
     return json.dumps(resources_as_dicts)
+
 
 @main.route('/search-resources')
 def search_resources():
@@ -50,13 +62,13 @@ def search_resources():
     if req_options is None:
         req_options = []
     # case insensitive search
-    resource_pool = Resource.query.filter(Resource.name.ilike('%{}%'.format(name))).all()
+    resource_pool = Resource.query.filter(
+        Resource.name.ilike('%{}%'.format(name))).all()
     req_opt_desc = RequiredOptionDescriptor.query.all()
     if req_opt_desc:
         req_opt_desc = req_opt_desc[0]
         req_opt_desc = Descriptor.query.filter_by(
-            id=req_opt_desc.descriptor_id
-        ).first()
+            id=req_opt_desc.descriptor_id).first()
     resources = []
     if req_opt_desc and len(req_options) > 0:
         int_req_options = []
@@ -64,9 +76,7 @@ def search_resources():
             int_req_options.append(req_opt_desc.values.index(str(o)))
         for resource in resource_pool:
             associations = OptionAssociation.query.filter_by(
-                resource_id=resource.id,
-                descriptor_id=req_opt_desc.id
-            )
+                resource_id=resource.id, descriptor_id=req_opt_desc.id)
             for a in associations:
                 if a.option in int_req_options:
                     resources.append(resource)
@@ -95,8 +105,7 @@ def search_resources():
         number_of_options_found = 0
         for opt in option_map.keys():
             opt_descriptors = OptionAssociation.query.filter_by(
-                resource_id=resource.id
-            )
+                resource_id=resource.id)
             for desc in opt_descriptors:
                 if desc.descriptor.name == opt:
                     if desc.descriptor.values[desc.option] in option_map[opt]:
@@ -106,6 +115,7 @@ def search_resources():
             resources.append(resource)
     resources_as_dicts = Resource.get_resources_as_dicts(resources)
     return json.dumps(resources_as_dicts)
+
 
 @main.route('/get-associations/<int:resource_id>')
 def get_associations(resource_id):
@@ -128,36 +138,42 @@ def get_associations(resource_id):
         associations[od.descriptor.name] = list(values)
     return json.dumps(associations)
 
+
 @main.route('/about')
 def about():
     editable_html_obj = EditableHTML.get_editable_html('about')
-    return render_template('main/about.html',
-                           editable_html_obj=editable_html_obj)
+    return render_template(
+        'main/about.html', editable_html_obj=editable_html_obj)
+
 
 @main.route('/health')
 def health():
     editable_html_obj = EditableHTML.get_editable_html('health')
-    return render_template('main/health.html',
-                           editable_html_obj=editable_html_obj)
+    return render_template(
+        'main/health.html', editable_html_obj=editable_html_obj)
+
 
 @main.route('/rights')
 def rights():
     editable_html_obj = EditableHTML.get_editable_html('rights')
-    return render_template('main/rights.html',
-                           editable_html_obj=editable_html_obj)
+    return render_template(
+        'main/rights.html', editable_html_obj=editable_html_obj)
+
 
 @main.route('/hotlines')
 def hotlines():
-   editable_html_obj = EditableHTML.get_editable_html('hotlines')
-   return render_template('main/hotlines.html',
-                          editable_html_obj=editable_html_obj)
+    editable_html_obj = EditableHTML.get_editable_html('hotlines')
+    return render_template(
+        'main/hotlines.html', editable_html_obj=editable_html_obj)
+
 
 @main.route('/overview')
 @login_required
 def overview():
-   editable_html_obj = EditableHTML.get_editable_html('overview')
-   return render_template('main/overview.html',
-                          editable_html_obj=editable_html_obj)
+    editable_html_obj = EditableHTML.get_editable_html('overview')
+    return render_template(
+        'main/overview.html', editable_html_obj=editable_html_obj)
+
 
 @main.route('/update-editor-contents', methods=['POST'])
 @login_required
@@ -174,6 +190,7 @@ def update_editor_contents():
     db.session.commit()
     return 'OK', 200
 
+
 @csrf.exempt
 @main.route('/send-sms', methods=['POST'])
 def send_sms():
@@ -182,42 +199,44 @@ def send_sms():
     client = TwilioLookupsClient(account=sid, token=auth)
     send_client = TwilioRestClient(account=sid, token=auth)
     if request is not None:
-        phone_num= request.json['number']
+        phone_num = request.json['number']
         resourceID = request.json['id']
         curr_res = Resource.query.get(resourceID)
         name = "Name: " + curr_res.name
         address = "Address: " + curr_res.address
-        message = name +"\n" + address
+        message = name + "\n" + address
         try:
-            number = client.phone_numbers.get(phone_num, include_carrier_info=False)
+            number = client.phone_numbers.get(
+                phone_num, include_carrier_info=False)
             num = number.phone_number
             send_client.messages.create(
-                to=num,
-                from_="+17657692023",
-                body=message)
+                to=num, from_="+17657692023", body=message)
             return jsonify(status='success')
         except:
             return jsonify(status='error')
 
+
 @csrf.exempt
-@main.route('/rating-post', methods =['POST'])
+@main.route('/rating-post', methods=['POST'])
 def post_rating():
     if request is not None:
-            time = datetime.now()
-            star_rating = request.json['rating']
-            comment = request.json['review']
-            resourceID = request.json['id']
-            if comment and star_rating:
-                rating = Rating(submission_time=time,
-                                rating=star_rating,
-                                review=comment,
-                                resource_id=resourceID)
-                db.session.add(rating)
-                db.session.commit()
-            elif star_rating:
-                rating = Rating(submission_time=time,
-                                rating=star_rating,
-                                resource_id=resourceID)
-                db.session.add(rating)
-                db.session.commit()
+        time = datetime.now()
+        star_rating = request.json['rating']
+        comment = request.json['review']
+        resourceID = request.json['id']
+        if comment and star_rating:
+            rating = Rating(
+                submission_time=time,
+                rating=star_rating,
+                review=comment,
+                resource_id=resourceID)
+            db.session.add(rating)
+            db.session.commit()
+        elif star_rating:
+            rating = Rating(
+                submission_time=time,
+                rating=star_rating,
+                resource_id=resourceID)
+            db.session.add(rating)
+            db.session.commit()
     return jsonify(status='success')

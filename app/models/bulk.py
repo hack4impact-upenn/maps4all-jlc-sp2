@@ -16,11 +16,13 @@ class CsvContainer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date_uploaded = db.Column(db.DateTime)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    csv_rows = db.relationship('CsvBodyRow', backref='csv_container',
-                               uselist=True, cascade='delete')
-    csv_header_row = db.relationship('CsvHeaderRow',
-                                     backref='csv_header_row_container',
-                                     uselist=False, cascade='delete')
+    csv_rows = db.relationship(
+        'CsvBodyRow', backref='csv_container', uselist=True, cascade='delete')
+    csv_header_row = db.relationship(
+        'CsvHeaderRow',
+        backref='csv_header_row_container',
+        uselist=False,
+        cascade='delete')
     name_column_index = db.Column(db.Integer)  # Required column: 'Name'
     address_column_index = db.Column(db.Integer)  # Required column: 'Address'
 
@@ -56,8 +58,7 @@ class CsvContainer(db.Model):
     @staticmethod
     def most_recent(user):
         return CsvContainer.query.filter_by(user=user).order_by(
-            desc(CsvContainer.date_uploaded)
-        ).limit(1).first()
+            desc(CsvContainer.date_uploaded)).limit(1).first()
 
 
 class CsvHeaderRow(db.Model):
@@ -69,9 +70,11 @@ class CsvHeaderRow(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     csv_container_id = db.Column(db.Integer,
                                  db.ForeignKey('csv_containers.id'))
-    csv_header_cells = db.relationship('CsvHeaderCell',
-                                       backref='csv_header_row',
-                                       uselist=True, cascade='delete')
+    csv_header_cells = db.relationship(
+        'CsvHeaderCell',
+        backref='csv_header_row',
+        uselist=True,
+        cascade='delete')
 
 
 class CsvBodyRow(db.Model):
@@ -83,8 +86,8 @@ class CsvBodyRow(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     csv_container_id = db.Column(db.Integer,
                                  db.ForeignKey('csv_containers.id'))
-    csv_body_cells = db.relationship('CsvBodyCell', backref='csv_body_row',
-                                     uselist=True, cascade='delete')
+    csv_body_cells = db.relationship(
+        'CsvBodyCell', backref='csv_body_row', uselist=True, cascade='delete')
 
 
 class CsvHeaderCell(db.Model):
