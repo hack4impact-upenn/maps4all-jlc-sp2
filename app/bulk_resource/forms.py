@@ -13,6 +13,8 @@ from wtforms.fields import (
     SelectMultipleField
 )
 
+from wtforms.validators import Length
+
 
 class NavigationForm(Form):
     submit_next = SubmitField('Next')
@@ -41,3 +43,10 @@ class SaveCsvDataForm(Form):
     submit = SubmitField('Save')
     submit_cancel = SubmitField('Cancel')
     submit_back = SubmitField('Back')
+
+class VerifyAddressForm(Form):
+    address = StringField('Address', validators=[
+        InputRequired(),
+        Length(1, 500)
+    ])
+    submit = SubmitField('Verify')

@@ -42,8 +42,42 @@ from forms import (
     DetermineDescriptorTypesForm,
     DetermineOptionsForm,
     NavigationForm,
-    SaveCsvDataForm
+    SaveCsvDataForm,
+    VerifyAddressForm
 )
+
+
+''' Address verifier'''
+@bulk_resource.route('/verify-address', methods=['GET', 'POST'])
+@login_required
+def verify_address():
+    form = VerifyAddressForm()
+    if form.validate_on_submit():
+        address = form.address.data.strip()
+        if address:
+            cached = GeocoderCache.query.filter_by(
+                address=address
+            ).first()
+            if cached is None:
+                g = geocoder.google(address, key=os.environ.get('GOOGLE_API_KEY'))
+                if g.status != 'OK':
+                    msg = 'Address cannot be geocoded due to ' + g.status + ": " + address
+                    flash(msg, 'form-error')
+                else:
+                    geo = GeocoderCache(
+                        address=address,
+                        latitude=g.latlng[0],
+                        longitude=g.latlng[1]
+                    )
+                    db.session.add(geo)
+                    db.session.commit()
+                    msg = 'Address successfully geocoded: ' + address
+                    flash(msg, 'form-success')
+            else:
+                flash('Address successfully geocoded: ' + address, 'form-success')
+        else:
+            flash('Address cannot be geocoded', 'form-error')
+    return render_template('bulk_resource/verify_address.html', form=form)
 
 
 @csrf.exempt
