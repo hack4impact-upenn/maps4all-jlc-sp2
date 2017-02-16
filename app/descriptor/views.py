@@ -53,13 +53,13 @@ def new_descriptor():
         )
         if Descriptor.query.filter(Descriptor.name == form.name.data).first() \
                 is not None:
-            flash('Descriptor {} already exists.'.format(descriptor.name),
+            flash('Descriptor \"{}\" already exists.'.format(descriptor.name),
                   'form-error')
         else:
             db.session.add(descriptor)
             try:
                 db.session.commit()
-                flash('Descriptor {} successfully created'
+                flash('Descriptor \"{}\" successfully created'
                       .format(descriptor.name),
                       'form-success')
                 return redirect(url_for('descriptor.new_descriptor'))
@@ -98,7 +98,7 @@ def edit_name(desc_id):
             if old_name == form.name.data:
                 flash('No change was made', 'form-error')
             else:
-                flash('Descriptor {} already exists.'.format(form.name.data),
+                flash('Descriptor \"{}\" already exists.'.format(form.name.data),
                     'form-error')
             return render_template('descriptor/manage_descriptor.html',
                                    desc=descriptor, form=form,
@@ -107,7 +107,7 @@ def edit_name(desc_id):
         db.session.add(descriptor)
         try:
             db.session.commit()
-            flash('Name for descriptor {} successfully changed to {}.'.format(old_name, descriptor.name),
+            flash('Name for descriptor \"{}\" successfully changed to \"{}\".'.format(old_name, descriptor.name),
                 'form-success')
         except IntegrityError:
             db.session.rollback()
@@ -161,7 +161,7 @@ def change_option_values_index(desc_id):
     if form.validate_on_submit():
         values = descriptor.values[:]
         if form.value.data in values:
-            flash('Value {} already exists'.format(form.value.data),
+            flash('Value \"{}\" already exists'.format(form.value.data),
                   'form-error')
             return render_template('descriptor/manage_descriptor.html',
                                    desc=descriptor, is_option=is_option,
@@ -172,7 +172,7 @@ def change_option_values_index(desc_id):
         db.session.add(descriptor)
         try:
             db.session.commit()
-            flash('Value {} successfully added.'.format(form.value.data),
+            flash('Value \"{}\" successfully added.'.format(form.value.data),
                   'form-success')
             form.value.data = ''
         except IntegrityError:
@@ -203,7 +203,7 @@ def edit_option_value(desc_id, option_index):
         db.session.add(descriptor)
         try:
             db.session.commit()
-            flash('Value {} for descriptor {} successfully changed to {}.'
+            flash('Value \"{}\" for descriptor \"{}\" successfully changed to \"{}\".'
                   .format(old_value, descriptor.name,
                           descriptor.values[option_index]),
                   'form-success')
@@ -229,8 +229,19 @@ def remove_option_value(desc_id, option_index):
         abort(404)
     old_value = descriptor.values[option_index]
 
+    req_opt_desc = RequiredOptionDescriptor.query.all()
+    is_required = False
+    if req_opt_desc:
+        req_opt_desc = req_opt_desc[0]
+        is_required = req_opt_desc.descriptor_id == desc_id
+
+    # go to required descriptor option value removal template
+    if is_required:
+        return redirect(url_for('descriptor.remove_option_value_req',
+                                desc_id=desc_id, option_index=option_index))
+
     if len(descriptor.values) == 1:
-        flash('Descriptor {} only has one value.'.format(descriptor.name),
+        flash('Descriptor \"{}\" only has one value.'.format(descriptor.name),
               'form-error')
         return redirect(url_for('descriptor.change_option_values_index',
                                 desc_id=desc_id))
@@ -263,6 +274,94 @@ def remove_option_value(desc_id, option_index):
                            desc=descriptor, option_index=option_index,
                            form=form)
 
+@descriptor.route('/<int:desc_id>/option-values/remove-req/<int:option_index>',
+                  methods=['GET', 'POST'])
+@login_required
+def remove_option_value_req(desc_id, option_index):
+    """Remove a REQUIRED descriptor's selected option value."""
+    descriptor = Descriptor.query.get(desc_id)
+    if descriptor is None or len(descriptor.values) == 0:
+        abort(404)
+    old_value = descriptor.values[option_index]
+
+    req_opt_desc = RequiredOptionDescriptor.query.all()
+    is_required = False
+    if req_opt_desc:
+        req_opt_desc = req_opt_desc[0]
+        is_required = req_opt_desc.descriptor_id == desc_id
+
+    if not is_required:
+        abort(404)
+
+    if len(descriptor.values) == 1:
+        flash('Descriptor \"{}\" only has one value.'.format(descriptor.name),
+              'form-error')
+        return redirect(url_for('descriptor.change_option_values_index',
+                                desc_id=desc_id))
+
+    option_assocs = OptionAssociation.query.filter(db.and_(
+        OptionAssociation.descriptor_id == desc_id,
+        OptionAssociation.option == option_index
+    )).all()
+
+    choice_names, choices = generate_option_choices(descriptor, option_index)
+
+    # If no resources are affected, just remove the option value.
+    if len(option_assocs) == 0:
+        remove_value_from_db(descriptor, choice_names, old_value)
+        return redirect(url_for('descriptor.descriptor_info', desc_id=desc_id))
+
+    # check for resources with only selected option as required descriptor value
+    missing_assocs = set()
+    for oa in option_assocs:
+        all_assocs_req = OptionAssociation.query.filter(db.and_(
+            OptionAssociation.descriptor_id == desc_id,
+            OptionAssociation.resource_id == oa.resource_id
+        )).all()
+        if len(all_assocs_req) < 2:
+            missing_assocs.add(oa)
+
+    option_assocs = set(option_assocs) - missing_assocs
+
+    form = FixAllResourceOptionValueForm()
+
+    if form.validate_on_submit():
+        # Check that by removing the option value, all resources will still have
+        # a required option descriptor value
+        # Otherwise force the user to uphold this constraint
+        leftover = set()
+        for oa in missing_assocs:
+            all_assocs_req = OptionAssociation.query.filter(db.and_(
+                OptionAssociation.descriptor_id == desc_id,
+                OptionAssociation.resource_id == oa.resource_id,
+                OptionAssociation.option != option_index,
+            )).all()
+            if len(all_assocs_req) == 0:
+                leftover.add(oa)
+
+        if len(leftover) > 0:
+            flash('All Resources must have an alternative required option descriptor value',
+                  'form-error')
+        else:
+            # delete the option value associations
+            OptionAssociation.query.filter(db.and_(
+                OptionAssociation.descriptor_id == desc_id,
+                OptionAssociation.option == option_index
+            )).delete()
+
+            # HACK: keep descriptor value indices by inserting an empty string in place of the descriptor value
+            choice_names.insert(option_index, '')
+
+            if remove_value_from_db(descriptor, choice_names, old_value):
+                return redirect(url_for('descriptor.descriptor_info',
+                                        desc_id=desc_id))
+            else:
+                flash('Database error occurred. Please try again', 'form-error')
+    return render_template('descriptor/confirm_resources_req.html',
+                           option_assocs=option_assocs, desc_id=desc_id,
+                           desc=descriptor, option_index=option_index,
+                           form=form, missing_assocs=missing_assocs)
+
 def generate_option_choices(descriptor, removed_index):
     """Helper function to generate the new options + indices"""
     choice_names = (descriptor.values[:removed_index] +
@@ -279,7 +378,7 @@ def remove_value_from_db(descriptor, values, old_value):
     db.session.add(descriptor)
     try:
         db.session.commit()
-        flash('Value {} for descriptor {} successfully removed.'
+        flash('Value \"{}\" for descriptor \"{}\" successfully removed.'
               .format(old_value, descriptor.name),
               'form-success')
         return True

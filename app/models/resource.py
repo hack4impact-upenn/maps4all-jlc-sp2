@@ -208,7 +208,9 @@ class Resource(db.Model):
                     resource_id=resource.id,
                     descriptor_id=req_opt_desc.id
                 ).all()
-                req = [a.descriptor.values[a.option] for a in associations]
+                for a in associations:
+                    if a.option < len(a.descriptor.values):
+                        req.append(a.descriptor.values[a.option])
             res['requiredOpts'] = req
 
             # set ratings

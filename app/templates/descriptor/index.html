@@ -35,7 +35,13 @@
                                 <td></td>
                             {% else %}
                                 <td class="descriptor type">Option</td>
-                                <td>{{ ', '.join(d.values) }}</td>
+                                <td>
+                                  {% for v in d.values %}
+                                    {% if v %}
+                                      {{ v }}{% if not loop.last %},{% endif %}
+                                    {% endif %}
+                                  {% endfor %}
+                                </td>
                             {% endif %}
                         </tr>
                     {% endfor %}

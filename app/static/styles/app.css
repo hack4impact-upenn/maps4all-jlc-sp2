@@ -56,6 +56,11 @@
   margin-top: 0.5em;
 }
 
+@media -sass-debug-info{filename{}line{font-family:\0000368}}
+td.descriptor.type {
+  display: table-cell;
+}
+
 @media -sass-debug-info{filename{}line{font-family:\0000316}}
 body {
   font-family: "Nunito Sans", sans-serif;

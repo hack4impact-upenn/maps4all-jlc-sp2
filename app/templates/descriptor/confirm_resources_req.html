@@ -1,0 +1,110 @@
+{% extends 'layouts/base.html' %}
+{% import 'macros/form_macros.html' as f %}
+
+{% block content %}
+    <div class="ui stackable grid container">
+        <div class="sixteen wide tablet twelve wide computer centered column">
+            <h2 class="ui header">
+                {{ desc.name }}
+                <div class="sub header">
+                    Resolve issues with current resources.
+                </div>
+            </h2>
+
+            <a class="ui basic compact button" href="{{ url_for('descriptor.change_option_values_index', desc_id=desc.id) }}">
+                <i class="caret left icon"></i>
+                Back to descriptor
+            </a>
+
+            <h3 class="ui red block header">
+                <i class="warning circle icon"></i>
+                <div class="content">
+                    Action Required
+                    <div class="sub header">
+                        Deleting the value <b> {{ desc.values[option_index] }} </b> from the <b> <u>required</u> descriptor {{ desc.name }} </b>
+                        will affect these resources. Please select the new value for the resources below.
+                    </div>
+                </div>
+            </h3>
+            {% set flashes = {
+                'error':   get_flashed_messages(category_filter=['form-error']),
+                'warning': get_flashed_messages(category_filter=['form-check-email']),
+                'info':    get_flashed_messages(category_filter=['form-info']),
+                'success': get_flashed_messages(category_filter=['form-success'])
+            } %}
+
+            {{ f.begin_form(form, flashes) }}
+
+                <h3 class="ui header">
+                  Resources that Must Change
+                  <div class="sub header">
+                    The value {{ desc.values[option_index] }} is the <b> only </b> required descriptor value
+                    for these resources. These resources need to have a new required option descriptor value set
+                    before deleting {{ desc.values[option_index] }}.
+                  </div>
+                </h3>
+
+                {% if missing_assocs|length > 0 %}
+                {# Use overflow-x: scroll so that mobile views don't freak out
+                 # when the table is too wide #}
+                <div style="overflow-x: scroll;">
+                    <table style="border=0" class="ui unstackable celled table">
+                        <thead>
+                            <tr>
+                                <th class="sorted ascending">Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for oa in missing_assocs %}
+                            <tr>
+                                <td><a href="{{ url_for('single_resource.edit', resource_id=oa.resource_id) }}">{{ oa.resource.name }}</a></td></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <p><i>No resources</i></p>
+                {% endif %}
+
+                <h3 class="ui header">
+                  Resources To Review
+                  <div class="sub header">
+                    The value {{ desc.values[option_index] }} is not the only required option descriptor value
+                    for these resources. It is fine deleting the value for these resources.
+                  </div>
+                </h3>
+                {% if option_assocs|length > 0 %}
+                {# Use overflow-x: scroll so that mobile views don't freak out
+                 # when the table is too wide #}
+                <div style="overflow-x: scroll;">
+                    <table style="border=0" class="ui unstackable celled table">
+                        <thead>
+                            <tr>
+                                <th class="sorted ascending">Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for oa in option_assocs %}
+                            <tr>
+                                <td><a href="{{ url_for('single_resource.edit', resource_id=oa.resource_id) }}">{{ oa.resource.name }}</a></td></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <p><i>No resources</i></p>
+                {% endif %}
+
+                {{ f.form_message(flashes['error'], header='Something went wrong.', class='error') }}
+                {{ f.form_message(flashes['warning'], header='Check your email.', class='warning') }}
+                {{ f.form_message(flashes['info'], header='Information', class='info') }}
+                {{ f.form_message(flashes['success'], header='Success!', class='success') }}
+
+                {{ f.render_form_field(form.submit) }}
+
+            {{ f.end_form() }}
+        </div>
+    </div>
+{% endblock %}
