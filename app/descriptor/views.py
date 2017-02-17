@@ -255,14 +255,21 @@ def remove_option_value(desc_id, option_index):
 
     # If no resources are affected, just remove the option value.
     if len(option_assocs) == 0:
+        # HACK: keep descriptor value indices by inserting an empty string in place of the descriptor value
+        choice_names.insert(option_index, '')
         remove_value_from_db(descriptor, choice_names, old_value)
         return redirect(url_for('descriptor.descriptor_info', desc_id=desc_id))
 
     form = FixAllResourceOptionValueForm()
 
     if form.validate_on_submit():
-        for oa in option_assocs:
-            db.session.delete(oa)
+        OptionAssociation.query.filter(db.and_(
+            OptionAssociation.descriptor_id == desc_id,
+            OptionAssociation.option == option_index
+        )).delete()
+
+        # HACK: keep descriptor value indices by inserting an empty string in place of the descriptor value
+        choice_names.insert(option_index, '')
 
         if remove_value_from_db(descriptor, choice_names, old_value):
             return redirect(url_for('descriptor.descriptor_info',
@@ -308,6 +315,8 @@ def remove_option_value_req(desc_id, option_index):
 
     # If no resources are affected, just remove the option value.
     if len(option_assocs) == 0:
+        # HACK: keep descriptor value indices by inserting an empty string in place of the descriptor value
+        choice_names.insert(option_index, '')
         remove_value_from_db(descriptor, choice_names, old_value)
         return redirect(url_for('descriptor.descriptor_info', desc_id=desc_id))
 
