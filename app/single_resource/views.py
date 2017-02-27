@@ -1,7 +1,6 @@
 from flask import abort, flash, redirect, render_template, url_for, request
 from flask.ext.login import login_required
 from sqlalchemy.exc import IntegrityError
-from wtforms.fields import SelectMultipleField, TextAreaField
 from wtforms.fields import SelectMultipleField, SelectField, TextAreaField
 from flask_wtf.file import InputRequired
 
