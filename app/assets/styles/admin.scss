@@ -63,3 +63,8 @@ $transform: translate(-50%,0%);
     margin-top: 0.5em;
   }
 }
+
+// tables
+td.descriptor.type {
+  display: table-cell;
+}

@@ -61,7 +61,8 @@ def search_resources():
     if req_opt_desc and len(req_options) > 0:
         int_req_options = []
         for o in req_options:
-            int_req_options.append(req_opt_desc.values.index(str(o)))
+            if str(o) in req_opt_desc.values:
+                int_req_options.append(req_opt_desc.values.index(str(o)))
         for resource in resource_pool:
             associations = OptionAssociation.query.filter_by(
                 resource_id=resource.id,

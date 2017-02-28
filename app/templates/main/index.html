@@ -23,10 +23,12 @@
           <div class="req-desc-name">{{ req_desc.name }}</div>
           <select id="search-resources-req-options" multiple="" class="ui fluid dropdown">
               {% for req_option in req_options.keys() %}
-              {% if req_options[req_option] %}
-                <option value="{{ req_option }}" selected="selected">{{ req_option }}</option>
-              {% else %}
-                <option value="{{ req_option }}" >{{ req_option }}</option>
+              {% if req_option %}
+                {% if req_options[req_option] %}
+                  <option value="{{ req_option }}" selected="selected">{{ req_option }}</option>
+                {% else %}
+                  <option value="{{ req_option }}" >{{ req_option }}</option>
+                {% endif %}
               {% endif %}
             {% endfor %}
           </select>
@@ -45,7 +47,9 @@
                   <div>{{ o }}</div>
                   <select multiple="" class="ui fluid dropdown search-resources-options" placeholder="Select">
                       {% for val in options[o] %}
+                        {% if val %}
                               <option value="{{ o }}:{{ val }}">{{ val }}</option>
+                        {% endif %}
                       {% endfor %}
                   </select>
               {% endfor %}

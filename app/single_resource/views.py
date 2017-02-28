@@ -1,7 +1,6 @@
 from flask import abort, flash, redirect, render_template, url_for, request
 from flask.ext.login import login_required
 from sqlalchemy.exc import IntegrityError
-from wtforms.fields import SelectMultipleField, TextAreaField
 from wtforms.fields import SelectMultipleField, SelectField, TextAreaField
 from flask_wtf.file import InputRequired
 
@@ -72,7 +71,7 @@ def create():
     descriptors = Descriptor.query.all()
     for descriptor in descriptors:
         if descriptor.values:  # Fields for option descriptors.
-            choices = [(str(i), v) for i, v in enumerate(descriptor.values)]
+            choices = [(str(i), v) for i, v in enumerate(descriptor.values) if v]
             setattr(SingleResourceForm,
                     descriptor.name,
                     SelectMultipleField(choices=choices))
@@ -121,7 +120,7 @@ def edit(resource_id):
     descriptors = Descriptor.query.all()
     for descriptor in descriptors:
         if descriptor.values:  # Fields for option descriptors.
-            choices = [(str(i), v) for i, v in enumerate(descriptor.values)]
+            choices = [(str(i), v) for i, v in enumerate(descriptor.values) if v]
             default = None
             option_associations = OptionAssociation.query.filter_by(
                 resource_id=resource_id,

@@ -32,7 +32,16 @@
             <td>Text</td></tr>
         {% else %}
             <td>Option</td></tr>
-            <tr><td>Values</td><td>{{ ', '.join(desc.values) }}</td>
+            <tr>
+              <td>Values</td>
+              <td>
+                {% for v in desc.values %}
+                  {% if v %}
+                    {{ v }}{% if not loop.last %},{% endif %}
+                  {% endif %}
+                {% endfor %}
+              </td>
+            </tr>
         {% endif %}
     </table>
 {% endmacro %}
@@ -51,17 +60,19 @@
         <table class="ui basic collapsing table">
             <tbody>
             {% for i in range(desc.values|length) %}
+                {% if desc.values[i] %}
                 <tr>
                     <td>{{ desc.values[i] }}</td>
-                    <td><a class="ui edit button" 
+                    <td><a class="ui edit button"
                         href="{{ url_for('descriptor.edit_option_value', desc_id=desc.id, option_index=i) }}">
                         Edit
                     </a></td>
-                    <td><a class="ui negative deletion button" 
+                    <td><a class="ui negative deletion button"
                         href="{{ url_for('descriptor.remove_option_value', desc_id=desc.id, option_index=i) }}">
                         Remove
                     </a></td>
                 </tr>
+                {% endif %}
             {% endfor %}
                 <tr>
                     <td colspan="2">{{ f.render_form_field(form.value) }}</td>
@@ -144,5 +155,4 @@
             </div>
         </div>
     </div>
-
 {% endblock %}

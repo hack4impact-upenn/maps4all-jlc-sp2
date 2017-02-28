@@ -9,9 +9,9 @@ from sqlalchemy.exc import IntegrityError
 
 from . import suggestion
 from .. import db
-from ..models import Resource, Suggestion, Descriptor, TextAssociation, OptionAssociation
+from ..models import Resource, Suggestion, Descriptor, TextAssociation, OptionAssociation, RequiredOptionDescriptor
 from forms import SuggestionBasicForm, SuggestionAdvancedForm
-from wtforms.fields import TextAreaField, SelectField
+from wtforms.fields import TextAreaField, SelectField, SelectMultipleField
 from ..single_resource.views import save_associations
 from ..single_resource.forms import SingleResourceForm
 from app import create_app
@@ -141,16 +141,26 @@ def create(sugg_id):
     descriptors = Descriptor.query.all()
     for descriptor in descriptors:
         if descriptor.values:  # Fields for option descriptors.
-            choices = [(str(i), v) for i, v in enumerate(descriptor.values)]
+            choices = [(str(i), v) for i, v in enumerate(descriptor.values) if v]
             setattr(SingleResourceForm,
                     descriptor.name,
-                    SelectField(choices=choices))
+                    SelectMultipleField(choices=choices))
         else:  # Fields for text descriptors
             setattr(SingleResourceForm, descriptor.name, TextAreaField())
     form = SingleResourceForm()
     form.name.data = suggestion.resource_name
     form.address.data = suggestion.resource_address
     if form.validate_on_submit():
+        req_opt_desc = RequiredOptionDescriptor.query.all()
+        if req_opt_desc:
+            req_opt_desc = req_opt_desc[0]
+            descriptor = Descriptor.query.filter_by(
+                id=req_opt_desc.descriptor_id
+            ).first()
+            if descriptor is not None:
+                if not form[descriptor.name].data:
+                    flash('Error: Must set required descriptor: {}'.format(descriptor.name), 'form-error')
+                    return render_template('suggestion/create.html', form=form, suggestion=suggestion)
         new_resource = Resource(name=form.name.data,
                                 address=form.address.data,
                                 latitude=form.latitude.data,
@@ -160,6 +170,7 @@ def create(sugg_id):
                           form=form,
                           descriptors=descriptors,
                           resource_existed=False)
+        db.session.delete(suggestion)
         try:
             db.session.commit()
             flash('Resource added', 'form-success')
@@ -184,17 +195,17 @@ def edit(sugg_id):
     descriptors = Descriptor.query.all()
     for descriptor in descriptors:
         if descriptor.values:  # Fields for option descriptors.
-            choices = [(str(i), v) for i, v in enumerate(descriptor.values)]
+            choices = [(str(i), v) for i, v in enumerate(descriptor.values) if v]
             default = None
-            option_association = OptionAssociation.query.filter_by(
+            option_associations = OptionAssociation.query.filter_by(
                 resource_id=resource_id,
                 descriptor_id=descriptor.id
-            ).first()
-            if option_association is not None:
-                default = option_association.option
+            )
+            if option_associations is not None:
+                default = [assoc.option for assoc in option_associations]
             setattr(SingleResourceForm,
                     descriptor.name,
-                    SelectField(choices=choices, default=default))
+                    SelectMultipleField(choices=choices, default=default))
         else:  # Fields for text descriptors.
             default = None
             text_association = TextAssociation.query.filter_by(
@@ -208,6 +219,19 @@ def edit(sugg_id):
                     TextAreaField(default=default))
     form = SingleResourceForm()
     if form.validate_on_submit():
+        req_opt_desc = RequiredOptionDescriptor.query.all()
+        if req_opt_desc:
+            req_opt_desc = req_opt_desc[0]
+            descriptor = Descriptor.query.filter_by(
+                id=req_opt_desc.descriptor_id
+            ).first()
+            if descriptor is not None:
+                if not form[descriptor.name].data:
+                    flash('Error: Must set required descriptor: {}'.format(descriptor.name), 'form-error')
+                    return render_template('suggestion/edit.html',
+                                           form=form,
+                                           suggestion=suggestion,
+                                           resource_id=resource_id)
         # Field id is not needed for the form, hence omitted with [1:].
         for field_name in resource_field_names[1:]:
             setattr(resource, field_name, form[field_name].data)
@@ -215,6 +239,7 @@ def edit(sugg_id):
                           form=form,
                           descriptors=descriptors,
                           resource_existed=True)
+        db.session.delete(suggestion)
         try:
             db.session.commit()
             flash('Resource updated', 'form-success')
@@ -225,6 +250,7 @@ def edit(sugg_id):
                   'form-error')
     # Field id is not needed for the form, hence omitted with [1:].
     for field_name in resource_field_names[1:]:
-        form[field_name].data = resource.__dict__[field_name]
+        if form[field_name]:
+            form[field_name].data = resource.__dict__[field_name]
 
     return render_template('suggestion/edit.html', form=form, suggestion=suggestion, resource_id=resource_id)
