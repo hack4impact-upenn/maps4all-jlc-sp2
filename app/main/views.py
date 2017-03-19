@@ -159,6 +159,18 @@ def overview():
    return render_template('main/overview.html',
                           editable_html_obj=editable_html_obj)
 
+@main.route('/instructions')
+def instructions():
+   editable_html_obj = EditableHTML.get_editable_html('instructions')
+   return render_template('main/instructions.html',
+                          editable_html_obj=editable_html_obj)
+
+@main.route('/adulting')
+def adulting():
+ editable_html_obj = EditableHTML.get_editable_html('adulting')
+ return render_template('main/adulting.html',
+                        editable_html_obj=editable_html_obj)
+
 @main.route('/update-editor-contents', methods=['POST'])
 @login_required
 def update_editor_contents():
