@@ -29,14 +29,16 @@ def index():
     options = [o for o in options if len(o.text_resources) == 0 and o.id != req_opt_id]
     options_dict = {}
     for o in options:
-        # Sort descriptors alphabetically in filters
+        # Sort descriptor values alphabetically in filters
         o.values.sort()
         options_dict[o.name] = o.values
+    # Sort descriptors alphabetically
+    options_dict = OrderedDict(sorted(options_dict.items(), key=lambda x: x[0]))
     req_options = {}
     if req_opt_desc:
         for val in req_opt_desc.values:
             req_options[val] = False
-        # Sort descriptors alphabetically in filters
+        # Sort required descriptor values alphabetically in filters
         req_options = OrderedDict(sorted(req_options.items(), key=lambda x: x[0]))
     return render_template('main/index.html', options=options_dict, req_options=req_options, req_desc=req_opt_desc)
 
